@@ -1,5 +1,20 @@
 # Project rules
 
+## Layout
+
+Static site served by Vercel from `public/` (no build step).
+
+- `public/index.html` — the homepage, hand-written HTML on the design system
+- `public/css/site.css` — all component styles; uses only tokens from `public/design-system/tokens.css`
+- `public/js/site.js` — mobile nav, hero slideshow, reveal-on-scroll, counter (page works without it)
+- `public/design-system/` — `tokens.css` plus a rendered style guide at `/design-system/`
+- `DESIGN_SYSTEM.md` — the spec: tokens, components, contrast audit, known inconsistencies
+- `public/legacy/index.html` — byte-for-byte mirror of the original Elementor homepage, kept for visual comparison only; do not edit
+- `public/wp-content/`, `public/wp-includes/` — assets mirrored from the live site (images, Poppins, Font Awesome). Reference them, don't restructure them
+- `public/assets/icons/` — the 8 custom service icons as SVG + `sprite.svg`
+
+Add new pages as `public/<slug>/index.html` linking the same tokens + `site.css`. Every page needs the robots meta tag below.
+
 ## This site must NOT be indexed by search engines
 
 Until explicitly told otherwise, every page built in this repo must stay out of search results:
