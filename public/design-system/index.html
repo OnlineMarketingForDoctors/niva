@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<title>Niva design system</title>
+<link rel="icon" href="/wp-content/uploads/2024/05/cropped-Asset-5@3x-8-32x32.png">
+<link rel="stylesheet" href="/wp-content/uploads/elementor/google-fonts/css/poppins.css">
+<link rel="stylesheet" href="/wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.min.css">
+<link rel="stylesheet" href="/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.min.css">
+<link rel="stylesheet" href="/wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.min.css">
+<link rel="stylesheet" href="/design-system/tokens.css">
+<style>
+  /* Style-guide chrome. Everything visual inside a sample uses tokens only. */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--color-white); color: var(--color-text);
+    font-family: var(--font-sans); font-weight: var(--font-weight-light);
+    font-size: var(--text-body-size); line-height: var(--text-body-line);
+  }
+  a { color: inherit; }
+  code { font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--color-surface); padding: 1px 6px; border-radius: 4px; }
+
+  .wrap { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--section-gutter); }
+  .guide-head { padding: var(--space-section-sm) 0 var(--space-6); border-bottom: var(--border-card); }
+  .guide-head h1 { font-size: var(--text-heading-size); line-height: var(--text-heading-line); font-weight: var(--font-weight-bold); margin: 0 0 var(--space-3); }
+  .guide-head p { max-width: 70ch; margin: 0; font-size: var(--text-body-lg-size); }
+  .toc { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); margin: var(--space-6) 0 0; padding: 0; list-style: none; font-size: var(--text-label-size); font-weight: var(--font-weight-bold); }
+  .toc a { text-decoration: none; color: var(--color-secondary); }
+
+  .guide-section { padding: var(--space-section-sm) 0 0; }
+  .guide-section > h2 { font-size: var(--text-subhead-size); line-height: var(--text-subhead-line); font-weight: var(--font-weight-bold); margin: 0 0 var(--space-6); padding-bottom: var(--space-2); border-bottom: 2px solid var(--color-primary); display: inline-block; }
+  .note { font-size: var(--text-label-size); font-weight: var(--font-weight-light); line-height: 1.6; color: var(--color-text); max-width: 70ch; }
+  .note b { font-weight: var(--font-weight-semibold); }
+  .grid { display: grid; gap: var(--space-6); }
+  .g3 { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 1024px) { .g4 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 767px)  { .g4 { grid-template-columns: 1fr; } }
+  .row { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; }
+  .meta { font-size: 12px; line-height: 1.5; margin-top: var(--space-2); font-weight: var(--font-weight-regular); }
+  .meta code { font-size: 11px; }
+  .swatch { border-radius: var(--radius-card); overflow: hidden; border: var(--border-card); }
+  .swatch .chip { height: 88px; }
+  .swatch .meta { padding: var(--space-3) var(--space-4) var(--space-4); }
+  .swatch .meta strong { display: block; font-weight: var(--font-weight-bold); font-size: var(--text-label-size); }
+  .on-dark { background: var(--color-primary); color: var(--color-on-dark); padding: var(--space-9); border-radius: var(--radius-block); }
+  .on-surface { background: var(--color-surface); padding: var(--space-9); border-radius: var(--radius-block); }
+  .contrast { width: 100%; border-collapse: collapse; font-size: var(--text-label-size); font-weight: var(--font-weight-light); }
+  .contrast th, .contrast td { text-align: left; padding: var(--space-2) var(--space-3); border-bottom: var(--border-card); }
+  .contrast th { font-weight: var(--font-weight-bold); }
+  .pass { color: var(--color-secondary); font-weight: var(--font-weight-bold); }
+  .fail { color: #B42318; font-weight: var(--font-weight-bold); }
+  .type-row { display: grid; grid-template-columns: 150px 1fr; gap: var(--space-6); align-items: baseline; padding: var(--space-4) 0; border-bottom: var(--border-card); }
+  .type-row .meta { margin: 0; }
+  .radius-box { height: 90px; background: var(--color-surface); border: 2px solid var(--color-accent); display: grid; place-items: center; font-size: var(--text-label-size); font-weight: var(--font-weight-bold); }
+  .shadow-box { height: 110px; background: var(--color-white); border-radius: var(--radius-card); display: grid; place-items: center; font-size: var(--text-label-size); font-weight: var(--font-weight-bold); }
+  .spacer { background: var(--color-accent); height: 12px; border-radius: 2px; }
+  .sample-caption { font-size: 12px; font-weight: var(--font-weight-regular); margin: var(--space-2) 0 0; }
+  footer.guide-foot { padding: var(--space-section-sm) 0; font-size: var(--text-fine-size); }
+
+  /* ---------- Components (the reusable part) ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+    font-family: var(--font-sans); font-size: var(--text-button-size); font-weight: var(--font-weight-bold); line-height: 1;
+    color: var(--color-white); background: var(--color-secondary);
+    border: var(--border-button) solid var(--color-secondary); border-radius: var(--radius-pill);
+    padding: var(--space-4) var(--space-9); text-decoration: none; cursor: pointer; white-space: nowrap;
+    transition: var(--transition-surface), var(--transition-color);
+  }
+  .btn:hover, .btn:focus-visible { background: var(--color-primary); border-color: var(--color-primary); }
+  .btn--dark { background: var(--color-primary); border-color: var(--color-primary); }
+  .btn--dark:hover, .btn--dark:focus-visible { background: var(--color-secondary); border-color: var(--color-secondary); }
+  .btn--accent { background: var(--color-accent); border-color: var(--color-accent); }
+  .btn--accent:hover, .btn--accent:focus-visible { background: var(--color-secondary); border-color: var(--color-secondary); }
+  .btn-pair { display: inline-flex; }
+  .btn-pair .btn { font-size: 14px; }
+  .btn-pair .btn:first-child { border-radius: var(--radius-split) 0 0 var(--radius-split); padding: var(--space-5) var(--space-10) var(--space-5) var(--space-9); }
+  .btn-pair .btn:last-child  { border-radius: 0 var(--radius-split) var(--radius-split) 0; padding: var(--space-5) var(--space-9) var(--space-5) var(--space-10); }
+
+  .header-bar {
+    display: flex; align-items: center; gap: var(--space-6);
+    background: var(--color-white); border-radius: var(--radius-pill); box-shadow: var(--shadow-header);
+    padding: 1% 1% 1% 5%;
+  }
+  .header-bar img { width: var(--header-logo-width); height: auto; display: block; }
+  .header-bar nav { display: flex; gap: var(--space-8); margin-left: auto; }
+  .header-bar nav a { font-size: var(--text-label-size); font-weight: var(--font-weight-bold); text-decoration: none; padding: var(--space-3) 0; color: var(--color-text); transition: var(--transition-color); }
+  .header-bar nav a.is-active, .header-bar nav a:hover { color: var(--color-secondary); }
+  .header-bar .cta { display: flex; gap: var(--space-3); }
+  .header-bar .btn { border: 0; }
+
+  .eyebrow { font-size: var(--text-label-size); line-height: var(--text-label-line); font-weight: var(--font-weight-bold); color: var(--color-accent); margin: 0 0 var(--space-6); }
+  .eyebrow--lg { font-size: var(--text-subhead-size); line-height: var(--text-subhead-line); }
+  .heading { font-size: var(--text-heading-size); line-height: var(--text-heading-line); font-weight: var(--font-weight-bold); margin: 0 0 var(--space-6); }
+  .display { font-size: var(--text-display-size); line-height: var(--text-display-line); font-weight: var(--font-weight-bold); margin: 0 0 var(--space-6); }
+  .intro { font-size: var(--text-body-lg-size); line-height: var(--text-body-lg-line); margin: 0; max-width: 70ch; }
+
+  .card {
+    background: var(--color-white); border: var(--border-card); border-radius: var(--radius-card);
+    padding: var(--space-7) var(--space-7) 0; position: relative; overflow: hidden;
+    transition: var(--transition-surface);
+  }
+  .card:hover { box-shadow: var(--shadow-card-hover); }
+  .card h3 { font-size: var(--text-subhead-size); line-height: var(--text-subhead-line); font-weight: var(--font-weight-bold); margin: var(--space-6) 0 var(--space-3); }
+  .card p { margin: 0 0 var(--space-7); }
+  .icon-circle { width: var(--icon-circle-size); height: var(--icon-circle-size); border-radius: var(--radius-round); background: var(--color-primary); color: var(--color-white); display: grid; place-items: center; font-size: var(--icon-circle-glyph); transition: var(--transition-surface); }
+  .icon-circle--accent { background: var(--color-accent); }
+
+  .checklist { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-2) var(--space-6); }
+  .checklist li { display: flex; gap: var(--space-3); align-items: flex-start; }
+  .checklist i { color: var(--color-secondary); font-size: var(--icon-list-glyph); margin-top: 8px; transition: var(--transition-color); }
+  .on-dark .checklist i { color: var(--color-accent); }
+  .checklist li:hover i { color: var(--color-secondary); }
+
+  .stat { border-top: 1px solid var(--color-divider-on-dark); padding: var(--space-6) 0; }
+  .stat .num { font-size: var(--text-heading-size); line-height: var(--text-heading-line); font-weight: var(--font-weight-bold); color: var(--color-accent); }
+  .stat .lbl { margin: 0; }
+  .stat a { font-size: var(--text-label-size); font-weight: var(--font-weight-bold); color: var(--color-accent); text-decoration: none; }
+
+  .footer-sample { background: var(--color-primary); color: var(--color-white); border-radius: var(--radius-block) var(--radius-block) 0 0; padding: var(--space-9); display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-9); }
+  .footer-sample h4 { font-size: var(--text-subhead-size); line-height: var(--text-subhead-line); font-weight: var(--font-weight-bold); margin: 0 0 var(--space-3); }
+  .footer-sample ul { list-style: none; margin: 0; padding: 0; }
+  .footer-sample li { display: flex; gap: var(--space-3); align-items: baseline; }
+  .footer-sample li i { color: var(--color-accent); font-size: var(--icon-list-glyph); }
+  .social { display: flex; gap: var(--space-3); margin-top: var(--space-4); }
+  .social a { width: 40px; height: 40px; border-radius: var(--radius-round); background: var(--color-accent); color: var(--color-white); display: grid; place-items: center; font-size: 16px; text-decoration: none; }
+  .footer-sample .legal { grid-column: 1 / -1; border-top: 1px solid var(--color-divider-footer); padding-top: var(--space-4); margin-top: var(--space-4); font-size: var(--text-fine-size); }
+
+  @media (max-width: 767px) {
+    .header-bar { border-radius: var(--radius-block); padding: var(--space-3) var(--space-4); flex-wrap: wrap; }
+    .header-bar nav { display: none; }
+    .type-row { grid-template-columns: 1fr; gap: var(--space-2); }
+  }
+</style>
+</head>
+<body>
+
+<header class="guide-head">
+  <div class="wrap">
+    <h1>Niva design system</h1>
+    <p>Tokens and components extracted from the live homepage. Every value on this page comes from the site's own CSS or its computed styles; the full spec with usage notes is in <code>DESIGN_SYSTEM.md</code>.</p>
+    <ul class="toc">
+      <li><a href="#colour">Colour</a></li><li><a href="#type">Typography</a></li><li><a href="#space">Spacing</a></li><li><a href="#shape">Shape &amp; elevation</a></li><li><a href="#buttons">Buttons</a></li><li><a href="#header">Header</a></li><li><a href="#sections">Section patterns</a></li><li><a href="#cards">Cards &amp; lists</a></li><li><a href="#dark">Navy panels</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="guide-section" id="colour">
+  <h2>Colour</h2>
+  <div class="grid g3">
+    <div class="swatch"><div class="chip" style="background:var(--color-primary)"></div><div class="meta"><strong>Primary · navy</strong><code>#252C3F</code> <code>--color-primary</code><br>Dark sections, icon circles, hover state</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--color-secondary)"></div><div class="meta"><strong>Secondary · blue</strong><code>#175CD3</code> <code>--color-secondary</code><br>Buttons, active nav, checklist icons</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--color-accent)"></div><div class="meta"><strong>Accent · sky</strong><code>#75BDE9</code> <code>--color-accent</code><br>Eyebrows, stat numbers, icons on navy</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--color-text)"></div><div class="meta"><strong>Text</strong><code>#111111</code> <code>--color-text</code><br>All text on light backgrounds</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--color-surface)"></div><div class="meta"><strong>Surface · light blue</strong><code>#EAF5FC</code> <code>--color-surface</code><br>Hero and services section background</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--color-white)"></div><div class="meta"><strong>White</strong><code>#FFFFFF</code> <code>--color-white</code><br>Cards, header bar, text on navy</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--color-border)"></div><div class="meta"><strong>Border</strong><code>#D8D8D8</code> <code>--color-border</code><br>1px card outlines</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--color-surface-2)"></div><div class="meta"><strong>Off-white</strong><code>#F7F7F7</code> <code>--color-surface-2</code><br>Footer divider at 22% alpha only</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--color-muted)"></div><div class="meta"><strong>Muted (unintended)</strong><code>#69727D</code> <code>--color-muted</code><br>Elementor default; 3 unstyled elements</div></div>
+  </div>
+  <p class="note" style="margin-top:var(--space-9)"><b>Contrast.</b> The sky accent passes only on navy. The live site also uses it for text and button fills on white and light blue, where it fails WCAG AA. The rebuild should keep sky for icons and on-navy text and use the blue where sky text or fills sit on light backgrounds.</p>
+  <table class="contrast" style="margin-top:var(--space-4)">
+    <tr><th>Pair</th><th>Ratio</th><th>AA (normal text)</th></tr>
+    <tr><td>White on navy</td><td>13.9 : 1</td><td class="pass">pass</td></tr>
+    <tr><td>Text on light blue</td><td>17.1 : 1</td><td class="pass">pass</td></tr>
+    <tr><td>White on blue</td><td>6.0 : 1</td><td class="pass">pass</td></tr>
+    <tr><td>Sky on navy</td><td>6.8 : 1</td><td class="pass">pass</td></tr>
+    <tr><td>White on sky (accent buttons, social icons)</td><td>2.1 : 1</td><td class="fail">fail</td></tr>
+    <tr><td>Sky on white / light blue (eyebrows, stat labels)</td><td>2.1 / 1.9 : 1</td><td class="fail">fail</td></tr>
+  </table>
+</section>
+
+<section class="guide-section" id="type">
+  <h2>Typography</h2>
+  <p class="note">One family, <b>Poppins</b>, self-hosted. Body copy is light (300) with a loose 1.9 line-height; everything else is bold (700). Sizes step down at 1024px and 767px; resize the window to see the tokens change.</p>
+  <div style="margin-top:var(--space-6)">
+    <div class="type-row"><div class="meta"><code>--text-display</code><br>60 / 1.3 · 700<br>52 tablet · 35/45px mobile</div><div class="display" style="margin:0">Stanmore's Trusted Private GP Services</div></div>
+    <div class="type-row"><div class="meta"><code>--text-heading</code><br>42 / 1.3 · 700<br>38 · 30/40px</div><div class="heading" style="margin:0">Comprehensive Private GP services</div></div>
+    <div class="type-row"><div class="meta"><code>--text-subhead</code><br>20 / 1.5 · 700<br>19 mobile</div><div style="font-size:var(--text-subhead-size);line-height:var(--text-subhead-line);font-weight:var(--font-weight-bold)">Blood Tests &amp; Scans</div></div>
+    <div class="type-row"><div class="meta"><code>--text-body-lg</code><br>17 / 1.9 · 300<br>16 · 15</div><div class="intro">Award-Winning Private GP Care in North-West London offering same-day appointments, personalised care, and continuity you can trust.</div></div>
+    <div class="type-row"><div class="meta"><code>--text-body</code><br>16 / 1.9 · 300<br>15 mobile</div><div>Conveniently located in the heart of Stanmore, our modern clinic is registered and regulated by the Care Quality Commission (CQC). <b style="font-weight:var(--font-weight-semibold)">Emphasis inside body copy is 600.</b></div></div>
+    <div class="type-row"><div class="meta"><code>--text-label</code><br>15 / 1.5 · 700<br>14 mobile</div><div style="font-size:var(--text-label-size);line-height:var(--text-label-line);font-weight:var(--font-weight-bold)">Home &nbsp; About &nbsp; Services &nbsp; Fees &nbsp; Membership &nbsp; Contact</div></div>
+    <div class="type-row"><div class="meta"><code>--text-fine</code><br>15 / 1.9 · 300<br>14 mobile</div><div style="font-size:var(--text-fine-size)">© 2026 Niva Medical Clinic. All rights reserved.</div></div>
+  </div>
+</section>
+
+<section class="guide-section" id="space">
+  <h2>Spacing &amp; layout</h2>
+  <p class="note">Boxed content at <b>1140px</b> inside full-width sections with <b>5%</b> side padding. Columns sit <b>4%</b> apart; stacked widgets <b>20px</b> apart. Section padding on the live site is set in % and drifts with viewport width; the tokens freeze the 1440px values.</p>
+  <div class="grid g3" style="margin-top:var(--space-6)">
+    <div><div class="spacer" style="width:var(--space-2)"></div><div class="meta"><code>--space-2</code> 8px</div></div>
+    <div><div class="spacer" style="width:var(--space-3)"></div><div class="meta"><code>--space-3</code> 10px</div></div>
+    <div><div class="spacer" style="width:var(--space-4)"></div><div class="meta"><code>--space-4</code> 15px · button padding-y</div></div>
+    <div><div class="spacer" style="width:var(--space-6)"></div><div class="meta"><code>--space-6</code> 20px · widget gap</div></div>
+    <div><div class="spacer" style="width:var(--space-7)"></div><div class="meta"><code>--space-7</code> 24px · card padding</div></div>
+    <div><div class="spacer" style="width:var(--space-8)"></div><div class="meta"><code>--space-8</code> 28px · nav item gap</div></div>
+    <div><div class="spacer" style="width:var(--space-9)"></div><div class="meta"><code>--space-9</code> 30px · button padding-x</div></div>
+    <div><div class="spacer" style="width:var(--space-10)"></div><div class="meta"><code>--space-10</code> 40px · split-button outer padding</div></div>
+    <div><div class="spacer" style="width:var(--space-section-sm)"></div><div class="meta"><code>--space-section-sm</code> 72px</div></div>
+    <div><div class="spacer" style="width:var(--space-section-md)"></div><div class="meta"><code>--space-section-md</code> 100px</div></div>
+    <div><div class="spacer" style="width:var(--space-section-lg)"></div><div class="meta"><code>--space-section-lg</code> 144px</div></div>
+  </div>
+</section>
+
+<section class="guide-section" id="shape">
+  <h2>Shape &amp; elevation</h2>
+  <div class="grid g4">
+    <div><div class="radius-box" style="border-radius:var(--radius-sm)">5px</div><div class="meta"><code>--radius-sm</code> · footer chip</div></div>
+    <div><div class="radius-box" style="border-radius:var(--radius-card)">15px</div><div class="meta"><code>--radius-card</code> · cards (dominant)</div></div>
+    <div><div class="radius-box" style="border-radius:var(--radius-block)">20px</div><div class="meta"><code>--radius-block</code> · image blocks, footer top</div></div>
+    <div><div class="radius-box" style="border-radius:var(--radius-hero)">33px</div><div class="meta"><code>--radius-hero</code> · hero bottom corners</div></div>
+    <div><div class="radius-box" style="border-radius:var(--radius-split) 0 0 var(--radius-split)">50 · 0</div><div class="meta"><code>--radius-split</code> · joined buttons</div></div>
+    <div><div class="radius-box" style="border-radius:var(--radius-pill)">75px</div><div class="meta"><code>--radius-pill</code> · buttons, header bar</div></div>
+    <div><div class="radius-box" style="border-radius:var(--radius-round);width:90px">50%</div><div class="meta"><code>--radius-round</code> · icon circles</div></div>
+  </div>
+  <div class="grid g4" style="margin-top:var(--space-9)">
+    <div><div class="shadow-box" style="border:var(--border-card)">resting card</div><div class="meta">1px <code>#D8D8D8</code>, no shadow</div></div>
+    <div><div class="shadow-box" style="border:var(--border-card);box-shadow:var(--shadow-card-hover)">card hover</div><div class="meta"><code>--shadow-card-hover</code> 0 0 31px · 5%</div></div>
+    <div><div class="shadow-box" style="box-shadow:var(--shadow-header);border-radius:var(--radius-pill)">header bar</div><div class="meta"><code>--shadow-header</code> 0 2px 10px · 16%</div></div>
+    <div><div class="shadow-box" style="box-shadow:var(--shadow-dropdown)">dropdown</div><div class="meta"><code>--shadow-dropdown</code> 0 10px 10px −6px · 24%</div></div>
+  </div>
+  <p class="note" style="margin-top:var(--space-6)">Every state change animates over <b>0.3s</b> (<code>--transition-surface</code>, <code>--transition-color</code>).</p>
+</section>
+
+<section class="guide-section" id="buttons">
+  <h2>Buttons</h2>
+  <p class="note">Pill, 15/700, padding 15×30, 2px border. Hover swaps to the primary navy (or to blue from navy). Split pairs are two joined buttons at 14px with asymmetric padding.</p>
+  <div class="row" style="margin-top:var(--space-6)">
+    <a class="btn" href="#">Book Appointment</a>
+    <a class="btn btn--dark" href="#">020 8865 1938</a>
+    <a class="btn btn--accent" href="#">Find Out More</a>
+    <span class="btn-pair"><a class="btn btn--accent" href="#">Find Out More</a><a class="btn btn--dark" href="#">Book Appointment</a></span>
+  </div>
+  <div class="meta" style="margin-top:var(--space-4)"><code>.btn</code> primary · <code>.btn--dark</code> header CTAs · <code>.btn--accent</code> (fails AA on white) · <code>.btn-pair</code> split</div>
+</section>
+
+<section class="guide-section" id="header">
+  <h2>Header bar</h2>
+  <p class="note">A white pill with <code>--shadow-header</code> that floats 120px down over the hero. Logo left, bold 15px nav 28px apart with the active page in blue, two dark pill CTAs on the right. Collapses to hamburger + call icon + Book Online below 1024px.</p>
+  <div class="on-surface" style="margin-top:var(--space-6);border-radius:0 0 var(--radius-hero) var(--radius-hero)">
+    <div class="header-bar">
+      <img src="/wp-content/uploads/2024/05/Asset-23x-8-1.png" alt="Niva Medical Clinic" width="176" height="59">
+      <nav><a class="is-active" href="#">Home</a><a href="#">About</a><a href="#">Services</a><a href="#">Fees</a><a href="#">Membership</a><a href="#">Contact</a></nav>
+      <div class="cta"><a class="btn btn--dark" href="#">020 8865 1938</a><a class="btn btn--dark" href="#">Book Online</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="guide-section" id="sections">
+  <h2>Section patterns</h2>
+  <p class="note">Backgrounds alternate light blue → white → navy. Each section opens with an optional sky eyebrow, a 42px heading and a 17px intro, 20px apart. The hero uses the 60px display size and curves its bottom corners at 33px.</p>
+  <div class="on-surface" style="margin-top:var(--space-6);border-radius:0 0 var(--radius-hero) var(--radius-hero)">
+    <p class="eyebrow">Private GP in Stanmore</p>
+    <h3 class="display" style="max-width:14ch">Stanmore's Trusted Private GP Services</h3>
+    <p class="intro">Award-Winning Private GP Care in North-West London offering same-day appointments, personalised care, and continuity you can trust.</p>
+  </div>
+  <p class="sample-caption">Hero on <code>--color-surface</code>: eyebrow → display → intro → checklist → split buttons.</p>
+  <div style="margin-top:var(--space-9);text-align:center">
+    <h3 class="heading" style="max-width:24ch;margin-inline:auto">Comprehensive Private GP services in Stanmore Broadway, North-West London</h3>
+    <p class="intro" style="margin-inline:auto">Conveniently located in the heart of Stanmore, our modern clinic is registered and regulated by the Care Quality Commission (CQC).</p>
+  </div>
+  <p class="sample-caption">Centred section header on white, followed by a four-up card grid.</p>
+</section>
+
+<section class="guide-section" id="cards">
+  <h2>Cards &amp; lists</h2>
+  <div class="grid g4">
+    <article class="card"><div class="icon-circle"><i class="fas fa-hospital"></i></div><h3>Private GP Services &amp; Home Visits</h3><p>Book a private GP consultation with our GMC-registered doctors, in clinic or at home.</p></article>
+    <article class="card"><div class="icon-circle"><i class="fas fa-clock"></i></div><h3>Blood Test &amp; Scans</h3><p>We offer a full range of blood tests and diagnostics for various health concerns.</p></article>
+    <article class="card"><div class="icon-circle"><i class="fas fa-male"></i></div><h3>Health Checks</h3><p>Health screening is a vital part of preventive healthcare, enabling early detection.</p></article>
+    <article class="card"><div class="icon-circle"><i class="fas fa-hands-wash"></i></div><h3>Weight Loss Services</h3><p>Our weight loss clinic offers personalised plans including GLP-1 treatments.</p></article>
+  </div>
+  <p class="sample-caption"><code>.card</code>: white, 1px border, 15px radius, 24px padding, 61px navy icon circle. Hover adds <code>--shadow-card-hover</code>.</p>
+  <ul class="checklist" style="margin-top:var(--space-9)">
+    <li><i class="fas fa-check-circle"></i><span>Private GP Consultations &amp; Home Visits</span></li>
+    <li><i class="fas fa-check-circle"></i><span>Health Checks &amp; Blood Tests</span></li>
+    <li><i class="fas fa-check-circle"></i><span>Men's Health &amp; TRT</span></li>
+    <li><i class="fas fa-check-circle"></i><span>Weight Loss Consultations</span></li>
+    <li><i class="fas fa-check-circle"></i><span>Women's Health, Menopause &amp; HRT</span></li>
+    <li><i class="fas fa-check-circle"></i><span>Dermatology &amp; Minor Surgery</span></li>
+  </ul>
+  <p class="sample-caption"><code>.checklist</code>: 15px <code>fa-check-circle</code> in blue, 16/300 text, two columns.</p>
+</section>
+
+<section class="guide-section" id="dark">
+  <h2>Navy panels</h2>
+  <div class="on-dark">
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+      <div>
+        <p class="eyebrow eyebrow--lg" style="color:var(--color-accent)">Why choose Niva</p>
+        <ul class="checklist" style="grid-template-columns:1fr">
+          <li><i class="fas fa-check-circle"></i><span>Same-day appointments</span></li>
+          <li><i class="fas fa-check-circle"></i><span>GMC-registered doctors</span></li>
+          <li><i class="fas fa-check-circle"></i><span>CQC regulated clinic</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="stat"><div class="num">50+</div><p class="lbl">Over 50+ Years of Our Medical Experience</p></div>
+        <div class="stat"><a href="#">About Us</a></div>
+      </div>
+      <div><div class="icon-circle icon-circle--accent"><i class="fas fa-phone-alt"></i></div><p style="margin:var(--space-4) 0 0">Icon circles flip to the accent on navy.</p></div>
+    </div>
+  </div>
+  <p class="sample-caption">Stats panel: accent 42px number, white 16/300 label, hairline dividers at 13% white.</p>
+  <div class="footer-sample" style="margin-top:var(--space-9)">
+    <div><h4>Niva Medical Clinic</h4><ul><li><i class="fas fa-map-marker-alt"></i><span>12 Buckingham Parade, The Broadway, Stanmore HA7 4EB</span></li><li><i class="fas fa-phone-alt"></i><span>020 8865 1938</span></li><li><i class="fas fa-envelope"></i><span>info@nivamedicalclinic.co.uk</span></li></ul><div class="social"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin"></i></a></div></div>
+    <div><h4>Opening Hours</h4><ul><li><i class="fas fa-clock"></i><span>Mon – Fri: 8am – 8pm</span></li><li><i class="fas fa-clock"></i><span>Saturday: 9am – 5pm</span></li><li><i class="fas fa-clock"></i><span>Sunday: closed</span></li></ul></div>
+    <div><h4>Quick Links</h4><ul><li><i class="fas fa-minus"></i><span>About</span></li><li><i class="fas fa-minus"></i><span>Services</span></li><li><i class="fas fa-minus"></i><span>Fees</span></li></ul></div>
+    <div class="legal">© 2026 Niva Medical Clinic · Privacy Policy · Cookie Policy</div>
+  </div>
+  <p class="sample-caption">Footer: navy, 20px top corners (tablet), 20/700 headings, 16/300 links, accent icons, 22% divider.</p>
+</section>
+
+</main>
+
+<footer class="guide-foot"><div class="wrap">Extracted 23 Sep 2026 from nivamedicalclinic.co.uk. Internal reference — not indexed.</div></footer>
+
+</body>
+</html>

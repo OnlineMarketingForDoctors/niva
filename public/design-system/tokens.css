@@ -1,0 +1,138 @@
+/*
+ * Niva Medical Clinic — design tokens
+ *
+ * Extracted from the live site (Elementor kit #36 + page/header/footer CSS
+ * + computed styles at 1440px, 1024px and 390px). Every value below appears
+ * on the live homepage; nothing here is invented. Where the live site uses
+ * several near-identical values, the dominant one is the token and the
+ * alternatives are noted in DESIGN_SYSTEM.md.
+ *
+ * Usage:  <link rel="stylesheet" href="/design-system/tokens.css">
+ *         then var(--color-primary), var(--text-body), etc.
+ */
+
+:root {
+  /* ---------- Colour ---------- */
+  --color-primary:    #252C3F;   /* navy: dark sections, icon circles, button hover, header CTAs */
+  --color-secondary:  #175CD3;   /* blue: default buttons, active nav, checklist icons, hover accent */
+  --color-accent:     #75BDE9;   /* sky: eyebrows, stat numbers, icons on navy, accent buttons */
+  --color-text:       #111111;   /* body & headings on light backgrounds */
+  --color-white:      #FFFFFF;
+  --color-surface:    #EAF5FC;   /* light-blue section background (hero, services) */
+  --color-surface-2:  #F7F7F7;   /* off-white; only used at low alpha for footer dividers */
+  --color-border:     #D8D8D8;   /* card outlines */
+  --color-muted:      #69727D;   /* Elementor default grey; unstyled meta text (3 places) */
+
+  /* On-navy variants */
+  --color-on-dark:         #FFFFFF;
+  --color-on-dark-accent:  var(--color-accent);
+  --color-divider-on-dark: rgba(255, 255, 255, 0.13);
+  --color-divider-footer:  rgba(247, 247, 247, 0.22);
+
+  /* ---------- Typography ---------- */
+  --font-sans: "Poppins", sans-serif;   /* self-hosted: /wp-content/uploads/elementor/google-fonts/css/poppins.css */
+  --font-weight-light:    300;   /* all body copy */
+  --font-weight-regular:  400;   /* unstyled defaults only */
+  --font-weight-medium:   500;   /* side-tab button */
+  --font-weight-semibold: 600;   /* <b> inside body copy */
+  --font-weight-bold:     700;   /* every heading, nav link, button, eyebrow */
+
+  /* Type scale — desktop (>1024px). Names follow the Elementor kit roles. */
+  --text-display-size: 60px;  --text-display-line: 1.3;   /* hero heading (kit "70db0b8") */
+  --text-heading-size: 42px;  --text-heading-line: 1.3;   /* section headings (kit "primary") */
+  --text-subhead-size: 20px;  --text-subhead-line: 1.5;   /* card titles, footer headings (kit "secondary") */
+  --text-body-size:    16px;  --text-body-line:    1.9;   /* dominant body size (kit "c8b1476", 209 uses) */
+  --text-body-lg-size: 17px;  --text-body-lg-line: 1.9;   /* intro paragraphs (kit "text", 55 uses) */
+  --text-label-size:   15px;  --text-label-line:   1.5;   /* nav links, buttons, eyebrows (kit "accent") */
+  --text-fine-size:    15px;  --text-fine-line:    1.9;   /* footer fine print */
+  --text-button-size:  15px;
+
+  /* ---------- Layout ---------- */
+  --container-max:    1140px;
+  --section-gutter:   5%;      /* horizontal padding on every full-width section */
+  --column-gutter:    4%;      /* margin between columns (also 5% / 6% on the live site) */
+  --widget-gap:       20px;    /* vertical space between stacked widgets */
+
+  /* Section vertical rhythm (live site uses 5%, 7%, 8%, 10% of viewport width) */
+  --space-section-sm: 72px;    /* 5%  @1440 */
+  --space-section-md: 100px;   /* 7%  @1440 */
+  --space-section-lg: 144px;   /* 10% @1440 */
+
+  /* Component spacing */
+  --space-1:  5px;
+  --space-2:  8px;
+  --space-3:  10px;
+  --space-4:  15px;
+  --space-5:  18px;
+  --space-6:  20px;
+  --space-7:  24px;
+  --space-8:  28px;    /* nav item gap */
+  --space-9:  30px;
+  --space-10: 40px;
+
+  /* ---------- Shape ---------- */
+  --radius-sm:    5px;    /* small chips (footer badge) */
+  --radius-card:  15px;   /* service cards */
+  --radius-block: 20px;   /* image blocks, footer top corners (tablet) */
+  --radius-hero:  33px;   /* hero section bottom corners, large blocks */
+  --radius-split: 50px;   /* joined "split pair" buttons */
+  --radius-pill:  75px;   /* buttons, header bar */
+  --radius-round: 50%;    /* icon circles */
+
+  --border-card:   1px solid var(--color-border);
+  --border-button: 2px;
+
+  /* ---------- Elevation ---------- */
+  --shadow-card-hover: 0 0 31px 0 rgba(0, 0, 0, 0.05);
+  --shadow-header:     0 2px 10px 0 rgba(0, 0, 0, 0.16);
+  --shadow-dropdown:   0 10px 10px -6px rgba(0, 0, 0, 0.24);
+  --shadow-float:      0 6px 14px -10px rgba(0, 0, 0, 0.30);
+
+  /* ---------- Motion ---------- */
+  --duration: 0.3s;
+  --transition-surface: background var(--duration), border var(--duration),
+                        border-radius var(--duration), box-shadow var(--duration);
+  --transition-color:   color var(--duration), fill var(--duration);
+
+  /* ---------- Components ---------- */
+  --icon-circle-size: 61px;
+  --icon-circle-glyph: 25px;
+  --icon-list-glyph: 15px;
+  --header-overlap: 120px;     /* header bar pulls down over the hero */
+  --header-logo-width: 176px;
+
+  /* ---------- Breakpoints (for reference; use in media queries) ---------- */
+  --bp-tablet: 1024px;
+  --bp-mobile: 767px;
+}
+
+/* Tablet (≤1024px) — from the kit's responsive overrides */
+@media (max-width: 1024px) {
+  :root {
+    --text-display-size: 52px;
+    --text-heading-size: 38px;
+    --text-body-lg-size: 16px;
+    --container-max: 1024px;
+    --space-section-sm: 51px;
+    --space-section-md: 72px;
+    --space-section-lg: 102px;
+  }
+}
+
+/* Mobile (≤767px) */
+@media (max-width: 767px) {
+  :root {
+    --text-display-size: 35px;  --text-display-line: 45px;
+    --text-heading-size: 30px;  --text-heading-line: 40px;
+    --text-subhead-size: 19px;
+    --text-body-size:    15px;
+    --text-body-lg-size: 15px;
+    --text-label-size:   14px;
+    --text-fine-size:    14px;
+    --text-button-size:  14px;
+    --container-max: 767px;
+    --space-section-sm: 20px;
+    --space-section-md: 28px;
+    --space-section-lg: 39px;
+  }
+}
