@@ -129,6 +129,8 @@ Base: Poppins 15/700, padding `15px 30px`, radius pill, 2px border, 0.3s.
 | Dark (header "020 8865 1938", "Book Online") | `#252C3F` | none | white | → blue |
 | Accent | `#75BDE9` | same | white | → blue (fails AA, see §1) |
 | Split pair | left accent / right navy, or reversed | 2px | white, 14px | swap to blue |
+| Outline (hero secondary) | transparent | 2px navy | navy | fill navy, text white |
+| Large (`.btn--lg`, hero) | — | — | 16px, padding `18px 30px` | dark variant adds a soft navy drop shadow |
 | Side tab | accent, radius `20 0 0 20`, 16/500, padding `20px 15px` | 1px | white | — |
 
 Split pair geometry: left button `radius 50 0 0 50`, padding `18px 40px 18px
@@ -140,6 +142,16 @@ over the hero with `margin-bottom: -120px`. Logo (176px wide) left; nav links
 15/700 `#111`, 28px apart, active link blue; two dark pill CTAs right.
 Dropdown: white, `--shadow-dropdown`, highlighted item blue with white text.
 On tablet/mobile the nav collapses to a hamburger + "CALL" icon + Book Online.
+
+### Hero (full-bleed photo)
+Photo fills the section (`object-position: 75% center`), with a left-to-right
+`--color-surface` wash fading out by 66 % so the copy sits on light blue. Copy
+column max 600px: display heading → intro → five selling points (20px blue
+`fa-check-circle`, bold lead-in + light remainder) → dark + outline large
+buttons → "Or call" line. Two white review badges (radius 15, header shadow)
+sit bottom-right over the photo. Below 1024px the wash strengthens and the
+badges drop under the copy; below 767px the photo becomes a rounded 3:2 block
+between the copy and the badges.
 
 ### Section
 Full-width background (surface / white / navy), `--section-gutter` sides,

@@ -10,6 +10,7 @@
 <link rel="icon" href="/wp-content/uploads/2024/05/cropped-Asset-5@3x-8-192x192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="/wp-content/uploads/2024/05/cropped-Asset-5@3x-8-180x180.png">
 <link rel="preload" href="/wp-content/uploads/2024/05/Asset-23x-8-1.png" as="image">
+<link rel="preload" href="/assets/img/hero-consultation.webp" as="image" media="(min-width: 768px)">
 <link rel="stylesheet" href="/wp-content/uploads/elementor/google-fonts/css/poppins.css">
 <link rel="stylesheet" href="/wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.min.css">
 <link rel="stylesheet" href="/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.min.css">
@@ -129,55 +130,76 @@
 <main id="main">
 
   <!-- Hero -->
-  <section class="hero section" aria-labelledby="hero-title">
-    <div class="container">
-      <div class="hero-top">
-        <div>
-          <h1 class="display" id="hero-title">Stanmore's Trusted Private GP Services</h1>
-          <div class="btn-pair">
-            <a class="btn" href="https://nivamedicalclinic.co.uk/about/">Find Out More</a>
-            <span class="or" aria-hidden="true">Or</span>
-            <a class="btn btn--dark" href="https://nivamedicalclinic.co.uk/book-online">Book Appointment</a>
-          </div>
+  <section class="hero" aria-labelledby="hero-title">
+    <picture class="hero-media">
+      <source media="(max-width: 767px)" srcset="/assets/img/hero-consultation-mobile.webp">
+      <img src="/assets/img/hero-consultation.webp" alt="A Niva GP talking with a patient in a consulting room" width="2000" height="859" fetchpriority="high">
+    </picture>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <h1 class="display" id="hero-title">Stanmore's Trusted Private GP Services</h1>
+        <p class="intro">Award-Winning Private GP Care in North-West London offering same-day appointments, personalised care, and continuity you can trust.</p>
+        <ul class="hero-points">
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i><span><b>Same-day appointments,</b> Monday to Saturday</span></li>
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i><span><b>Face-to-face, video and telephone</b> consultations, plus home visits</span></li>
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i><span><b>Continuity of care</b> with your own "family doctor"</span></li>
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i><span><b>Independent, CQC-registered</b> clinic on Stanmore Broadway</span></li>
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i><span><b>GMC-registered doctors</b> with evening and weekend availability</span></li>
+        </ul>
+        <div class="hero-actions">
+          <a class="btn btn--dark btn--lg" href="https://nivamedicalclinic.co.uk/book-online">Book an appointment</a>
+          <a class="btn btn--outline btn--lg" href="https://nivamedicalclinic.co.uk/contact/">Contact us</a>
         </div>
-        <div>
-          <p class="intro">Award-Winning Private GP Care in North-West London offering same-day appointments, personalised care, and continuity you can trust.</p>
-          <ul class="checklist">
-            <li><i class="fas fa-check-circle" aria-hidden="true"></i><span>Private GP Consultations &amp; Home Visits</span></li>
-            <li><i class="fas fa-check-circle" aria-hidden="true"></i><span>Advanced MSK Physiotherapist</span></li>
-            <li><i class="fas fa-check-circle" aria-hidden="true"></i><span>Health Checks &amp; Blood Tests</span></li>
-            <li><i class="fas fa-check-circle" aria-hidden="true"></i><span>Cryosurgery with Cryopen</span></li>
-            <li><i class="fas fa-check-circle" aria-hidden="true"></i><span>Men's Health &amp; TRT</span></li>
-            <li><i class="fas fa-check-circle" aria-hidden="true"></i><span>Audiologist</span></li>
-            <li><i class="fas fa-check-circle" aria-hidden="true"></i><span>Weight Loss Consultations</span></li>
-            <li><i class="fas fa-check-circle" aria-hidden="true"></i><span>Psychotherapist</span></li>
-            <li><i class="fas fa-check-circle" aria-hidden="true"></i><span>Women's Health, Menopause &amp; HRT</span></li>
-            <li><i class="fas fa-check-circle" aria-hidden="true"></i><span>Speech &amp; Language Therapist</span></li>
-            <li><i class="fas fa-check-circle" aria-hidden="true"></i><span>Dermatology &amp; Minor Surgery</span></li>
-            <li><i class="fas fa-check-circle" aria-hidden="true"></i><span>Joint &amp; Soft Tissue Injections</span></li>
-            <li><i class="fas fa-check-circle" aria-hidden="true"></i><span>Sexual Health Services</span></li>
-            <li><i class="fas fa-check-circle" aria-hidden="true"></i><span>Optometrist &amp; Dry Eye Clinic</span></li>
-          </ul>
-        </div>
+        <p class="hero-call">Or call <a href="tel:02088651938">020 8865 1938</a></p>
       </div>
 
-      <div class="hero-bottom">
-        <div class="proof-card on-dark reveal">
-          <div class="badge"><img src="/wp-content/uploads/elementor/thumbs/UK-Great-rmaw6ell20mxehuh4h42n1013yju12ogbh6lxwkq5k.png" alt="Doctify 2025 award: Great Patient Experience" loading="lazy"></div>
-          <div class="badge"><img src="/wp-content/uploads/elementor/thumbs/Recommended-by-Patients-on-Doctify-dark-r3ocsfb5qoj9o6y5ro7dxorto1k9nfja3trfuu73vs.png" alt="Recommended by patients on Doctify" loading="lazy"></div>
-          <div class="stat">
-            <div class="num"><span data-count="50">0</span>+</div>
-            <p>Over 50+ Years of Our Medical Experience</p>
-            <a href="https://nivamedicalclinic.co.uk/about/">About Us</a>
-          </div>
+      <!-- Review badges. TODO: add confirmed rating + review count in .review-score / .review-count -->
+      <ul class="review-badges" aria-label="Patient reviews">
+        <li>
+          <a class="review-badge" href="https://www.google.com/maps/search/?api=1&amp;query=Niva+Medical+Clinic+Stanmore" rel="noopener">
+            <span class="review-logo review-logo--google">
+              <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.6-.4-3.9z"/></svg>
+              <span>Google</span>
+            </span>
+            <span class="review-meta">
+              <span class="review-score"><span class="stars" aria-hidden="true">★★★★★</span></span>
+              <span class="review-count">Patient reviews</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="review-badge" href="https://www.doctify.com/uk/practice/niva-medical-clinic" rel="noopener">
+            <span class="review-logo review-logo--doctify">
+              <img src="/wp-content/uploads/2024/05/maxresdefault__1_-removebg-preview-1-1.png" alt="Doctify" width="110" height="34">
+            </span>
+            <span class="review-meta">
+              <span class="review-score"><span class="stars" aria-hidden="true">★★★★★</span></span>
+              <span class="review-count">Verified reviews</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Clinic proof + photos (moved out of the hero) -->
+  <section class="section section--sm clinic-proof" aria-label="Awards and clinic photos">
+    <div class="container hero-bottom">
+      <div class="proof-card on-dark reveal">
+        <div class="badge"><img src="/wp-content/uploads/elementor/thumbs/UK-Great-rmaw6ell20mxehuh4h42n1013yju12ogbh6lxwkq5k.png" alt="Doctify 2025 award: Great Patient Experience" loading="lazy"></div>
+        <div class="badge"><img src="/wp-content/uploads/elementor/thumbs/Recommended-by-Patients-on-Doctify-dark-r3ocsfb5qoj9o6y5ro7dxorto1k9nfja3trfuu73vs.png" alt="Recommended by patients on Doctify" loading="lazy"></div>
+        <div class="stat">
+          <div class="num"><span data-count="50">0</span>+</div>
+          <p>Over 50+ Years of Our Medical Experience</p>
+          <a href="https://nivamedicalclinic.co.uk/about/">About Us</a>
         </div>
-        <div class="slideshow" role="img" aria-label="Inside Niva Medical Clinic: reception, consulting rooms and waiting area">
-          <img class="is-active" src="/wp-content/uploads/2025/01/IMG_9485-scaled-e1736786935921.jpg" alt="">
-          <img src="/wp-content/uploads/2025/05/IMG_0399-scaled.jpg" alt="" loading="lazy">
-          <img src="/wp-content/uploads/2025/01/DSC_2391.jpg" alt="" loading="lazy">
-          <img src="/wp-content/uploads/2025/05/IMG_0400-scaled.jpg" alt="" loading="lazy">
-          <img src="/wp-content/uploads/2025/01/Rception_edited-scaled-e1736787474346.jpg" alt="" loading="lazy">
-        </div>
+      </div>
+      <div class="slideshow" role="img" aria-label="Inside Niva Medical Clinic: reception, consulting rooms and waiting area">
+        <img class="is-active" src="/wp-content/uploads/2025/01/IMG_9485-scaled-e1736786935921.jpg" alt="" loading="lazy">
+        <img src="/wp-content/uploads/2025/05/IMG_0399-scaled.jpg" alt="" loading="lazy">
+        <img src="/wp-content/uploads/2025/01/DSC_2391.jpg" alt="" loading="lazy">
+        <img src="/wp-content/uploads/2025/05/IMG_0400-scaled.jpg" alt="" loading="lazy">
+        <img src="/wp-content/uploads/2025/01/Rception_edited-scaled-e1736787474346.jpg" alt="" loading="lazy">
       </div>
     </div>
   </section>
@@ -190,14 +212,14 @@
   <!-- Accreditations -->
   <section class="logo-strip" aria-label="Accreditations and memberships">
     <ul class="reveal">
-      <li><img src="/wp-content/uploads/2025/01/Asset-18-1024x307-1.png" alt="Doctify" loading="lazy"></li>
+      <li><img src="/wp-content/uploads/2025/01/Asset-18-1024x307-1.png" alt="Health &amp; Care Professions Council" loading="lazy"></li>
       <li><img src="/wp-content/uploads/2024/05/royal-college-of-general-practitioners.png" alt="Royal College of General Practitioners" loading="lazy"></li>
       <li><img src="/wp-content/uploads/2024/05/unnamed-removebg-preview-1-1.png" alt="British Medical Association" loading="lazy"></li>
       <li><img src="/wp-content/uploads/2024/12/CQC-e1736967860427.png" alt="Care Quality Commission" loading="lazy"></li>
       <li><img src="/wp-content/uploads/2025/01/ICO_Logo_White-e1736967775173.png" alt="Information Commissioner's Office" loading="lazy"></li>
-      <li><img src="/wp-content/uploads/2024/05/maxresdefault__1_-removebg-preview-1-1.png" alt="Health &amp; Care Professions Council" loading="lazy"></li>
+      <li><img src="/wp-content/uploads/2024/05/maxresdefault__1_-removebg-preview-1-1.png" alt="Doctify" loading="lazy"></li>
       <li><img src="/wp-content/uploads/2024/05/MDU-380x95-1-e1736967904815.png" alt="Medical Defence Union" loading="lazy"></li>
-      <li><img src="/wp-content/uploads/2025/04/output-onlinepngtools.png" alt="" loading="lazy"></li>
+      <li><img src="/wp-content/uploads/2025/04/output-onlinepngtools.png" alt="British Menopause Society" loading="lazy"></li>
     </ul>
   </section>
 
