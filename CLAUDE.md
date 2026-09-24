@@ -6,7 +6,7 @@ Static site served by Vercel from `public/` (no build step).
 
 - `public/index.html` — the homepage, hand-written HTML on the design system
 - `public/css/site.css` — all component styles; uses only tokens from `public/design-system/tokens.css`
-- `public/js/site.js` — mobile nav, hero slideshow, reveal-on-scroll, counter (page works without it)
+- `public/js/site.js` — mobile nav, services accordion, review carousel, reveal-on-scroll (page works without it)
 - `public/design-system/` — `tokens.css` plus a rendered style guide at `/design-system/`
 - `DESIGN_SYSTEM.md` — the spec: tokens, components, contrast audit, known inconsistencies
 - `public/legacy/index.html` — byte-for-byte mirror of the original Elementor homepage, kept for visual comparison only; do not edit

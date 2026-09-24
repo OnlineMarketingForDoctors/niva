@@ -19,17 +19,6 @@
     });
   }
 
-  /* Hero slideshow: 3s per slide, 0.5s fade (live site: slide-left) */
-  var slides = document.querySelectorAll('.slideshow img');
-  if (slides.length > 1 && !reduce) {
-    var i = 0;
-    setInterval(function () {
-      slides[i].classList.remove('is-active');
-      i = (i + 1) % slides.length;
-      slides[i].classList.add('is-active');
-    }, 3000);
-  }
-
   /* Services accordion: one row open at a time.
      Mouse: hovering a row opens it (it stays open until another row is hovered,
      so the list doesn't jump under the pointer). Touch and keyboard (Enter/Space):
