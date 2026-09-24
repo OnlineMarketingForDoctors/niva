@@ -400,6 +400,7 @@ h1, h2, h3, h4 { margin: 0; font-weight: var(--font-weight-bold); }
 .faq-body { padding: 0 var(--space-7) var(--space-6); }
 .faq-body p { margin: 0 0 .75em; }
 .faq-body p:last-child { margin: 0; }
+.faq-body a { color: var(--color-secondary); font-weight: var(--font-weight-semibold); text-underline-offset: 3px; }
 
 /* ---------- Find us ---------- */
 .find-grid { display: grid; grid-template-columns: 7fr 5fr; gap: var(--space-section-sm); align-items: start; }
