@@ -167,6 +167,18 @@ White, `1px solid #D8D8D8`, radius 15, padding `24px 24px 0`. Icon circle top-
 left, 20/700 title, 16/300 body. Hover: `--shadow-card-hover` and a 15 % white
 overlay; border stays. Four across at 1140px (276px each, 4 % gutters).
 
+### Service list (accordion)
+Replaces the 4-up card grid. One white panel (radius 20, 1px border) with
+hairline dividers between rows; no numbering, since the services are not a
+sequence. Row: 48px navy icon circle, 20/700 title, plus/minus toggle. The open
+row gets a pale blue tint, a 3px blue left edge, a blue icon and a minus; its
+blurb (16/300, max 60ch) and a specific "Find out about …" link slide open.
+One row open at a time. Mouse: hover opens a row and it stays open until
+another row is hovered, so the list never jumps under the pointer. Touch and
+keyboard: the row's button toggles it (`aria-expanded` kept in sync). Without
+JS, hover and focus open rows via CSS. Paired with a sticky left column
+(heading, intro, dark "Book an appointment" button, "Or call" line).
+
 ### Icon circle
 61px, navy fill, white 25px Font Awesome glyph, radius 50%. Hover keeps navy
 (stacked view). On navy sections the fill flips to accent.
