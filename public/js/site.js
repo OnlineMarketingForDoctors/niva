@@ -58,6 +58,20 @@
     });
   });
 
+  /* Google reviews: clamp long ones behind "Read more" */
+  document.querySelectorAll('.g-review').forEach(function (card) {
+    var text = card.querySelector('.g-text'), btn = card.querySelector('.g-more');
+    if (!text || !btn) return;
+    card.classList.add('is-clamped');
+    if (text.scrollHeight <= text.clientHeight + 4) { card.classList.remove('is-clamped'); return; }
+    btn.hidden = false;
+    btn.addEventListener('click', function () {
+      var open = card.classList.toggle('is-clamped') === false;
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.textContent = open ? 'Show less' : 'Read more';
+    });
+  });
+
   /* Review carousel: duplicate the cards once so the loop is seamless */
   if (!reduce) {
     document.querySelectorAll('.marquee-track').forEach(function (track) {
