@@ -158,19 +158,20 @@ h1, h2, h3, h4 { margin: 0; font-weight: var(--font-weight-bold); }
   display: flex; gap: var(--space-4);
 }
 .review-badge {
-  display: flex; align-items: center; gap: var(--space-4);
-  background: var(--color-white); border-radius: var(--radius-card); box-shadow: var(--shadow-header);
-  padding: var(--space-4) var(--space-6); text-decoration: none; color: var(--color-text);
+  display: flex; align-items: center; gap: var(--space-5);
+  background: var(--color-white); border-radius: var(--radius-block); box-shadow: 0 4px 18px rgba(0, 0, 0, .08);
+  padding: var(--space-4) var(--space-7); text-decoration: none; color: var(--color-primary);
   transition: var(--transition-surface);
 }
-.review-badge:hover { box-shadow: 0 8px 24px rgba(0, 0, 0, .14); }
-.review-logo { display: flex; align-items: center; gap: var(--space-2); padding-right: var(--space-4); border-right: 1px solid var(--color-border); font-weight: var(--font-weight-medium); font-size: 20px; color: #5f6368; }
-.review-logo svg { width: 28px; height: 28px; }
-.review-logo--doctify img { height: 30px; width: auto; filter: brightness(0) saturate(100%) invert(14%) sepia(19%) saturate(1160%) hue-rotate(186deg) brightness(92%); }
-.review-meta { display: flex; flex-direction: column; line-height: 1.3; }
-.review-score { font-weight: var(--font-weight-bold); font-size: var(--text-label-size); }
-.stars { color: #F5A623; letter-spacing: 1px; font-size: 16px; }
-.review-count { font-size: 13px; }
+.review-badge:hover { box-shadow: 0 8px 26px rgba(0, 0, 0, .14); }
+.review-logo { display: flex; align-items: center; gap: var(--space-2); padding-right: var(--space-5); border-right: 1px solid #E4E5E8; align-self: stretch; }
+.review-logo--google { font-size: 23px; font-weight: var(--font-weight-semibold); color: #606367; letter-spacing: -.01em; }
+.review-logo--google svg { width: 28px; height: 28px; }
+.review-logo--doctify img { height: 30px; width: auto; }
+.review-meta { display: flex; flex-direction: column; gap: 2px; line-height: 1.2; }
+.review-score { display: flex; align-items: center; gap: 6px; font-weight: var(--font-weight-bold); font-size: 18px; color: var(--color-primary); }
+.stars { color: #EAA844; letter-spacing: 1px; font-size: 18px; line-height: 1; }
+.review-count { font-size: 15px; font-weight: var(--font-weight-regular); color: var(--color-primary); }
 
 /* Button additions used by the hero */
 .btn--lg { padding: var(--space-5) var(--space-9); font-size: 16px; }
@@ -338,3 +339,17 @@ h1, h2, h3, h4 { margin: 0; font-weight: var(--font-weight-bold); }
 
 /* Proof + photos block, now its own section after the hero */
 .clinic-proof .hero-bottom { margin-top: 0; }
+
+/* Review badges: keep logos and counts intact at narrow widths */
+.review-logo svg, .review-logo img { flex: 0 0 auto; }
+.review-count { white-space: nowrap; }
+@media (max-width: 767px) {
+  .review-badges { align-items: stretch; }
+  .review-badge { padding: var(--space-3) var(--space-5); gap: var(--space-4); }
+  .review-logo { padding-right: var(--space-4); min-width: 128px; }
+  .review-logo--google { font-size: 20px; }
+  .review-logo--google svg { width: 24px; height: 24px; }
+  .review-logo--doctify img { height: 26px; }
+  .review-score, .stars { font-size: 16px; }
+  .review-count { font-size: 14px; }
+}
