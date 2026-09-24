@@ -235,9 +235,10 @@ h1, h2, h3, h4 { margin: 0; font-weight: var(--font-weight-bold); }
 
 /* ---------- About ---------- */
 .about { background: var(--color-white) url("/wp-content/uploads/2024/05/BG-3-1.png") bottom center / cover no-repeat; }
-.about-photos { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); align-items: start; }
-.about-photos img { width: 100%; height: 480px; object-fit: cover; border-radius: var(--radius-block); }
-.about-photos img:first-child { margin-top: var(--space-10); height: 400px; }
+.about-title { max-width: 30ch; margin: 0 auto var(--space-10); text-align: center; }
+.about-cols { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-10) var(--column-gutter); }
+.about-cols p { margin: 0; font-size: var(--text-body-lg-size); line-height: var(--text-body-lg-line); }
+@media (max-width: 767px) { .about-cols { grid-template-columns: 1fr; gap: var(--space-6); } }
 
 /* ---------- Services ---------- */
 .card {
@@ -325,7 +326,7 @@ h1, h2, h3, h4 { margin: 0; font-weight: var(--font-weight-bold); }
   .hero::before { background: linear-gradient(90deg, var(--color-surface) 0%, rgba(234,245,252,.92) 50%, rgba(234,245,252,.35) 100%); }
   .review-badges { position: static; padding: 0 var(--section-gutter) var(--space-section-sm); max-width: var(--container-max); margin: 0 auto; }
   .hero { flex-direction: column; align-items: stretch; }
-  .hero-bottom, .about .grid-2, .why .grid-2, .cta .grid-2, .find-card { grid-template-columns: 1fr; }
+  .hero-bottom, .why .grid-2, .cta .grid-2, .find-card { grid-template-columns: 1fr; }
   .grid-4 { grid-template-columns: 1fr 1fr; }
   .proof-card { border-radius: var(--radius-block) var(--radius-block) 0 0; }
   .slideshow { border-radius: 0 0 var(--radius-block) var(--radius-block); min-height: 320px; }
@@ -339,7 +340,6 @@ h1, h2, h3, h4 { margin: 0; font-weight: var(--font-weight-bold); }
   .header-bar { border-radius: var(--radius-block); padding: var(--space-2) var(--space-3) var(--space-2) var(--space-4); gap: var(--space-2); }
   .brand img { width: 120px; }
   .checklist, .grid-4, .footer-grid { grid-template-columns: 1fr; }
-  .about-photos img, .about-photos img:first-child { height: 260px; margin-top: 0; }
   .btn-pair { flex-direction: column; align-items: stretch; width: 100%; }
   .btn-pair .btn:first-child { border-radius: var(--radius-block) var(--radius-block) 0 0; padding: var(--space-5) var(--space-9) var(--space-9); }
   .btn-pair .btn:last-child  { border-radius: 0 0 var(--radius-block) var(--radius-block); padding: var(--space-9) var(--space-9) var(--space-5); }
