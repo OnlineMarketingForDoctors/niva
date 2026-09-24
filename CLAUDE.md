@@ -12,6 +12,7 @@ Static site served by Vercel from `public/` (no build step).
 - `public/legacy/index.html` — byte-for-byte mirror of the original Elementor homepage, kept for visual comparison only; do not edit
 - `public/wp-content/`, `public/wp-includes/` — assets mirrored from the live site (images, Poppins, Font Awesome). Reference them, don't restructure them
 - `public/assets/icons/` — the 8 custom service icons as SVG + `sprite.svg`
+- `public/assets/logos/` — association logos + Doctify SVG, copied from the `niva-lp` landing page repo
 
 Add new pages as `public/<slug>/index.html` linking the same tokens + `site.css`. Every page needs the robots meta tag below.
 

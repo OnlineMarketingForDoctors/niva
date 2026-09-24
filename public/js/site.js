@@ -29,6 +29,17 @@
     }, 3000);
   }
 
+  /* Review carousel: duplicate the cards once so the loop is seamless */
+  if (!reduce) {
+    document.querySelectorAll('.marquee-track').forEach(function (track) {
+      Array.prototype.slice.call(track.children).forEach(function (card) {
+        var clone = card.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        track.appendChild(clone);
+      });
+    });
+  }
+
   /* Reveal on scroll + counter */
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
