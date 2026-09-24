@@ -234,7 +234,16 @@ h1, h2, h3, h4 { margin: 0; font-weight: var(--font-weight-bold); }
 .review footer img { height: 14px; width: auto; }
 
 /* ---------- About ---------- */
-.about { background: var(--color-white) url("/wp-content/uploads/2024/05/BG-3-1.png") bottom center / cover no-repeat; }
+/* Reception photo under a navy tint so the white copy stays readable */
+.about {
+  --about-tint: linear-gradient(rgba(37, 44, 63, .78), rgba(37, 44, 63, .78));
+  background: var(--about-tint), url("/assets/img/about-reception.webp") center 40% / cover no-repeat;
+  background-color: var(--color-primary); color: var(--color-white);
+  padding-block: var(--space-section-lg);
+}
+@media (max-width: 767px) {
+  .about { background-image: var(--about-tint), url("/assets/img/about-reception-mobile.webp"); padding-block: var(--space-section-md); }
+}
 .about-title { max-width: 30ch; margin: 0 auto var(--space-10); text-align: center; }
 .about-cols { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-10) var(--column-gutter); }
 .about-cols p { margin: 0; font-size: var(--text-body-lg-size); line-height: var(--text-body-lg-line); }
