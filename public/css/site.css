@@ -44,6 +44,7 @@ h1, h2, h3, h4 { margin: 0; font-weight: var(--font-weight-bold); }
 .section-head .heading { max-width: 24ch; margin-inline: auto; }
 .section-head .heading { margin-bottom: var(--space-6); }
 .section-head--left { margin-inline: 0; text-align: left; }
+.section-head--left .heading { margin-inline: 0; }
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--column-gutter); align-items: center; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); }
 
@@ -227,6 +228,11 @@ h1, h2, h3, h4 { margin: 0; font-weight: var(--font-weight-bold); }
   background-color: var(--color-primary); color: var(--color-white);
   padding-block: var(--space-section-lg);
 }
+/* Parallax: the photo stays put while the section scrolls over it.
+   Desktop mouse devices only (iOS ignores fixed backgrounds) and never with reduced motion. */
+@media (min-width: 1025px) and (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .about { background-attachment: scroll, fixed; background-size: cover, cover; background-position: center, center 40%; }
+}
 @media (max-width: 767px) {
   .about { background-image: var(--about-tint), url("/assets/img/about-reception-mobile.webp"); padding-block: var(--space-section-md); }
 }
@@ -347,6 +353,33 @@ h1, h2, h3, h4 { margin: 0; font-weight: var(--font-weight-bold); }
 .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-3) var(--space-6); border-top: 1px solid var(--color-divider-footer); margin-top: var(--space-section-sm); padding-top: var(--space-4); font-size: var(--text-fine-size); }
 .footer-bottom ul { display: flex; gap: var(--space-6); }
 
+/* ---------- Floating actions: WhatsApp (left), back to top (right) ---------- */
+.fab-wa {
+  position: fixed; left: var(--space-4); bottom: var(--space-4); z-index: 45;
+  display: inline-flex; align-items: center; justify-content: center; gap: 0; width: 56px; height: 56px; padding: 0;
+  background: #25D366; color: var(--color-white); border-radius: var(--radius-pill); text-decoration: none;
+  font-size: 15px; font-weight: var(--font-weight-bold);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, .4); transition: transform var(--duration), box-shadow var(--duration);
+}
+.fab-wa:hover { transform: translateY(-2px); box-shadow: 0 16px 34px rgba(37, 211, 102, .5); }
+.fab-wa svg { width: 30px; height: 30px; }
+.fab-wa span { display: none; }
+.to-top {
+  position: fixed; right: var(--space-4); bottom: var(--space-4); z-index: 45;
+  width: 48px; height: 48px; border-radius: var(--radius-round); border: 0; cursor: pointer;
+  background: var(--color-primary); color: var(--color-white); box-shadow: 0 18px 45px rgba(26, 32, 48, .2);
+  display: grid; place-items: center;
+  opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity var(--duration), transform var(--duration), background-color var(--duration);
+}
+.to-top.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+.to-top:hover { background: var(--color-secondary); }
+.to-top svg { width: 20px; height: 20px; }
+@media (min-width: 900px) {
+  .fab-wa { left: var(--space-7); bottom: var(--space-7); width: auto; height: auto; gap: var(--space-3); padding: 10px 20px 10px 10px; }
+  .fab-wa span { display: inline; }
+  .to-top { right: var(--space-7); bottom: var(--space-7); }
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   .why-grid { grid-template-columns: 1fr; gap: var(--space-10); }
@@ -361,11 +394,12 @@ h1, h2, h3, h4 { margin: 0; font-weight: var(--font-weight-bold); }
   .header-bar { padding-left: var(--space-6); border-radius: var(--radius-pill); }
   .nav { position: fixed; inset: 0; z-index: 60; background: var(--color-white); padding: 90px var(--section-gutter) var(--space-9); overflow-y: auto; margin: 0;
          opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity var(--duration), transform var(--duration), visibility 0s var(--duration); }
+  .nav:not(.is-open) { pointer-events: none; }
   .nav.is-open { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
   .nav > ul { flex-direction: column; align-items: stretch; gap: 0; }
   .nav > ul > li { border-bottom: 1px solid var(--color-border); }
   .nav a { padding: var(--space-4) 0; font-size: 17px; }
-  .sub, .sub--wide { position: static; width: auto; display: block; opacity: 1; visibility: visible; transform: none; box-shadow: none; padding: 0 0 var(--space-3) var(--space-4); margin: 0; }
+  .sub, .sub--wide { position: static; width: auto; display: block; opacity: 1; visibility: inherit; transform: none; box-shadow: none; padding: 0 0 var(--space-3) var(--space-4); margin: 0; }
   .sub a, .sub--wide .group ul a { white-space: normal; font-size: 15px; padding: var(--space-2) 0; }
   .sub a:hover { background: none; color: var(--color-secondary); }
   .header-cta { margin-left: auto; }

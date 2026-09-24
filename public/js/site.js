@@ -19,6 +19,19 @@
     });
   }
 
+  /* Back to top: appears after scrolling 600px */
+  var toTop = document.querySelector('.to-top');
+  if (toTop) {
+    var onScroll = function () { toTop.classList.toggle('is-visible', (window.scrollY || document.documentElement.scrollTop) > 600); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    toTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      var skip = document.querySelector('.skip-link');
+      if (skip) skip.focus({ preventScroll: true });
+    });
+  }
+
   /* Services accordion: one row open at a time.
      Mouse: hovering a row opens it (it stays open until another row is hovered,
      so the list doesn't jump under the pointer). Touch and keyboard (Enter/Space):
