@@ -10,7 +10,7 @@
 <link rel="icon" href="/wp-content/uploads/2024/05/cropped-Asset-5@3x-8-192x192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="/wp-content/uploads/2024/05/cropped-Asset-5@3x-8-180x180.png">
 <link rel="preload" href="/wp-content/uploads/2024/05/Asset-23x-8-1.png" as="image">
-<link rel="preload" href="/wp-content/uploads/2025/01/Rception_edited-scaled-e1736787474346.jpg" as="image">
+<link rel="preload" href="/assets/img/hero-consultation.webp" as="image" media="(min-width: 768px)">
 <link rel="stylesheet" href="/wp-content/uploads/elementor/google-fonts/css/poppins.css">
 <link rel="stylesheet" href="/wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.min.css">
 <link rel="stylesheet" href="/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.min.css">
@@ -131,13 +131,10 @@
 
   <!-- Hero -->
   <section class="hero" aria-labelledby="hero-title">
-    <div class="hero-media" data-slideshow role="img" aria-label="Inside Niva Medical Clinic: reception, shopfront, consulting and treatment rooms">
-      <img src="/wp-content/uploads/2025/01/Rception_edited-scaled-e1736787474346.jpg" alt="" class="is-active" fetchpriority="high">
-      <img src="/wp-content/uploads/2025/01/IMG_9485-scaled-e1736786935921.jpg" alt="" loading="lazy">
-      <img src="/wp-content/uploads/2025/05/IMG_0399-scaled.jpg" alt="" loading="lazy">
-      <img src="/wp-content/uploads/2025/01/DSC_2391.jpg" alt="" loading="lazy">
-      <img src="/wp-content/uploads/2025/05/IMG_0400-scaled.jpg" alt="" loading="lazy">
-    </div>
+    <picture class="hero-media">
+      <source media="(max-width: 767px)" srcset="/assets/img/hero-consultation-mobile.webp">
+      <img src="/assets/img/hero-consultation.webp" alt="A Niva GP talking with a patient in a consulting room" width="2000" height="859" fetchpriority="high">
+    </picture>
     <div class="hero-inner">
       <div class="hero-copy">
         <h1 class="display" id="hero-title">Stanmore's Trusted Private GP Services</h1>
@@ -197,8 +194,12 @@
           <a href="https://nivamedicalclinic.co.uk/about/">About Us</a>
         </div>
       </div>
-      <div class="slideshow">
-        <img class="is-active" src="/assets/img/hero-consultation.webp" alt="A Niva GP talking with a patient in a consulting room" loading="lazy" style="object-position:75% center">
+      <div class="slideshow" role="img" aria-label="Inside Niva Medical Clinic: reception, consulting rooms and waiting area">
+        <img class="is-active" src="/wp-content/uploads/2025/01/IMG_9485-scaled-e1736786935921.jpg" alt="" loading="lazy">
+        <img src="/wp-content/uploads/2025/05/IMG_0399-scaled.jpg" alt="" loading="lazy">
+        <img src="/wp-content/uploads/2025/01/DSC_2391.jpg" alt="" loading="lazy">
+        <img src="/wp-content/uploads/2025/05/IMG_0400-scaled.jpg" alt="" loading="lazy">
+        <img src="/wp-content/uploads/2025/01/Rception_edited-scaled-e1736787474346.jpg" alt="" loading="lazy">
       </div>
     </div>
   </section>

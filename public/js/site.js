@@ -18,18 +18,15 @@
     });
   }
 
-  /* Slideshows ([data-slideshow]): cross-fade every 4s */
-  if (!reduce) {
-    document.querySelectorAll('[data-slideshow]').forEach(function (box) {
-      var slides = box.querySelectorAll('img');
-      if (slides.length < 2) return;
-      var i = 0;
-      setInterval(function () {
-        slides[i].classList.remove('is-active');
-        i = (i + 1) % slides.length;
-        slides[i].classList.add('is-active');
-      }, 4000);
-    });
+  /* Hero slideshow: 3s per slide, 0.5s fade (live site: slide-left) */
+  var slides = document.querySelectorAll('.slideshow img');
+  if (slides.length > 1 && !reduce) {
+    var i = 0;
+    setInterval(function () {
+      slides[i].classList.remove('is-active');
+      i = (i + 1) % slides.length;
+      slides[i].classList.add('is-active');
+    }, 3000);
   }
 
   /* Reveal on scroll + counter */
