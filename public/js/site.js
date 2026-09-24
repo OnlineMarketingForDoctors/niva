@@ -94,4 +94,44 @@
   } else {
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
   }
+  /* Gallery slider arrows */
+  var slider = document.querySelector('.gallery-grid');
+  var prevBtn = document.querySelector('[data-slider-prev]');
+  var nextBtn = document.querySelector('[data-slider-next]');
+  if (slider && prevBtn && nextBtn) {
+    function step() { return Math.max(240, slider.clientWidth * 0.8); }
+    function updateArrows() {
+      prevBtn.disabled = slider.scrollLeft <= 2;
+      nextBtn.disabled = slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 2;
+    }
+    prevBtn.addEventListener('click', function () { slider.scrollBy({ left: -step(), behavior: reduce ? 'auto' : 'smooth' }); });
+    nextBtn.addEventListener('click', function () { slider.scrollBy({ left: step(), behavior: reduce ? 'auto' : 'smooth' }); });
+    slider.addEventListener('scroll', updateArrows, { passive: true });
+    window.addEventListener('resize', updateArrows);
+    updateArrows();
+  }
+
+  /* Gallery lightbox */
+  var lb = document.getElementById('lightbox');
+  var links = Array.prototype.slice.call(document.querySelectorAll('[data-lightbox]'));
+  if (lb && links.length && typeof lb.showModal === 'function') {
+    var lbImg = lb.querySelector('img'), lbCap = lb.querySelector('figcaption'), current = 0;
+    function show(i) {
+      current = (i + links.length) % links.length;
+      lbImg.src = links[current].getAttribute('href');
+      lbImg.alt = links[current].getAttribute('data-caption') || '';
+      lbCap.textContent = lbImg.alt;
+    }
+    links.forEach(function (a, i) {
+      a.addEventListener('click', function (e) { e.preventDefault(); show(i); lb.showModal(); });
+    });
+    lb.querySelector('[data-lightbox-close]').addEventListener('click', function () { lb.close(); });
+    lb.querySelector('[data-lightbox-prev]').addEventListener('click', function () { show(current - 1); });
+    lb.querySelector('[data-lightbox-next]').addEventListener('click', function () { show(current + 1); });
+    lb.addEventListener('click', function (e) { if (e.target === lb) lb.close(); });
+    lb.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') show(current - 1);
+      if (e.key === 'ArrowRight') show(current + 1);
+    });
+  }
 })();
