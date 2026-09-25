@@ -480,6 +480,18 @@ h1, h2, h3, h4 { margin: 0; font-weight: var(--font-weight-bold); }
   .to-top { right: var(--space-7); bottom: var(--space-7); }
 }
 
+/* Laptop widths: tighten the header so the menu and both buttons fit.
+   Below 1080px there is still no room for the phone button; the number stays
+   in the footer, Find us and the mobile call icon. */
+@media (min-width: 1025px) and (max-width: 1279px) {
+  .header-bar { padding-left: var(--space-7); gap: var(--space-4); }
+  .brand img { width: 150px; }
+  .nav > ul { gap: var(--space-6); }
+}
+@media (min-width: 1025px) and (max-width: 1079px) {
+  .header-cta .btn--phone { display: none; }
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   .g-layout { grid-template-columns: 1fr; gap: var(--space-10); }
