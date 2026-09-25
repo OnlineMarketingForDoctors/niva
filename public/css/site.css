@@ -90,10 +90,20 @@ h1, h2, h3, h4 { margin: 0; font-weight: var(--font-weight-bold); }
 .has-sub:hover > .sub, .has-sub:focus-within > .sub { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
 .sub a { padding: var(--space-2) var(--space-5); font-weight: var(--font-weight-semibold); font-size: 14px; white-space: nowrap; }
 .sub a:hover, .sub a:focus-visible { background: var(--color-secondary); color: var(--color-white); }
-.sub--wide { min-width: 0; width: 760px; left: -200px; display: grid; grid-template-columns: repeat(3, 1fr); padding: var(--space-4) var(--space-3); gap: 0 var(--space-3); }
+/* The wide Services menu anchors to the whole header bar (not its menu item),
+   so it is centred under the bar and can never run past the viewport edge. */
+.header-bar { position: relative; }
+.nav > ul > li.has-sub--wide { position: static; }
+.sub--wide {
+  min-width: 0; width: min(960px, 100%); left: 50%; margin-left: calc(min(960px, 100%) / -2); top: calc(100% - 6px);
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--space-6); padding: var(--space-5) var(--space-6);
+}
+.sub--wide a { white-space: normal; }
 .sub--wide .group { padding: var(--space-2) 0; }
 .sub--wide .group > a { color: var(--color-secondary); }
-.sub--wide .group ul a { font-weight: var(--font-weight-light); padding-block: 5px; }
+.sub--wide .group > a:hover, .sub--wide .group > a:focus-visible { color: var(--color-white); }
+.sub--wide .group ul a { font-weight: var(--font-weight-light); padding-block: 5px; line-height: 1.4; }
+.sub--wide .group > a, .sub--wide .group ul a { padding-inline: var(--space-3); border-radius: var(--radius-sm); }
 .header-cta { display: flex; gap: var(--space-3); }
 .header-cta .btn { border: 0; padding-inline: var(--space-6); }
 .nav-toggle, .mobile-call { display: none; }
@@ -496,6 +506,7 @@ h1, h2, h3, h4 { margin: 0; font-weight: var(--font-weight-bold); }
   .nav > ul { flex-direction: column; align-items: stretch; gap: 0; }
   .nav > ul > li { border-bottom: 1px solid var(--color-border); }
   .nav a { padding: var(--space-4) 0; font-size: 17px; }
+  .sub--wide { margin-left: 0; left: auto; top: auto; }
   .sub, .sub--wide { position: static; width: auto; display: block; opacity: 1; visibility: inherit; transform: none; box-shadow: none; padding: 0 0 var(--space-3) var(--space-4); margin: 0; }
   .sub a, .sub--wide .group ul a { white-space: normal; font-size: 15px; padding: var(--space-2) 0; }
   .sub a:hover { background: none; color: var(--color-secondary); }
