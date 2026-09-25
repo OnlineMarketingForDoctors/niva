@@ -322,6 +322,7 @@ h1, h2, h3, h4 { margin: 0; font-weight: var(--font-weight-bold); }
 .gps-top { display: grid; grid-template-columns: 1fr auto; gap: var(--space-10); align-items: end; margin-bottom: var(--space-section-sm); }
 .gps-top .section-head { margin-bottom: 0; max-width: 640px; }
 .gps .lede { color: var(--color-muted); margin: 0; }
+.gps-more { margin-top: var(--space-7); }
 .gps-quote { position: static; width: auto; max-width: 26rem; box-shadow: none; border: var(--border-card); }
 .gps-hint { display: none; align-items: center; gap: var(--space-2); margin: 0 0 var(--space-3); font-size: 13px; color: var(--color-muted); }
 .gps-hint svg { width: 18px; height: 18px; }
