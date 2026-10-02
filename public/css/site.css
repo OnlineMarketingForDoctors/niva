@@ -629,6 +629,9 @@ body.modal-open { overflow: hidden; }
 .ct-message .section-head { margin: 0; position: sticky; top: 130px; }
 .ct-small { margin: var(--space-4) 0 0; font-size: 15px; color: var(--color-muted); }
 .ct-form { padding: var(--space-6); background: var(--color-white); border: var(--border-card); border-radius: var(--radius-hero); }
+.ct-form-head { padding: var(--space-3) var(--space-3) var(--space-5); }
+.ct-form-head h3 { font-size: var(--text-subhead-size); line-height: var(--text-subhead-line); color: var(--color-primary); margin-bottom: var(--space-1); }
+.ct-form-head p { margin: 0; font-size: 15px; color: var(--color-muted); }
 .ct-form iframe { display: block; width: 100%; min-height: 640px; }
 .ct-parking { display: flex; gap: var(--space-3); margin: 0; padding: var(--space-4) var(--space-5); background: var(--color-surface); border-radius: var(--radius-card); font-size: 15px; color: var(--color-primary); }
 .ct-parking i { color: var(--color-secondary); font-size: 18px; margin-top: 3px; }
