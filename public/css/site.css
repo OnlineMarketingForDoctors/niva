@@ -565,17 +565,8 @@ h1, h2, h3, h4 { margin: 0; font-weight: var(--font-weight-bold); }
 body.modal-open { overflow: hidden; }
 
 /* ---------- Pricing page ---------- */
-.pr-hero { margin-top: calc(-1 * var(--header-overlap)); padding: calc(var(--header-overlap) + var(--space-section-sm)) var(--section-gutter) var(--space-section-sm); background: var(--color-surface); border-radius: 0 0 var(--radius-hero) var(--radius-hero); }
-.pr-hero-inner { display: grid; grid-template-columns: 7fr 5fr; gap: var(--space-section-sm); align-items: end; }
-.pr-hero .display { margin-bottom: var(--space-6); }
-.pr-hero .intro { margin: 0; max-width: 34em; }
-.pr-promise { display: grid; gap: var(--space-3); padding: var(--space-7); background: var(--color-white); border: var(--border-card); border-radius: var(--radius-block); }
-.pr-promise li { display: flex; gap: var(--space-3); align-items: flex-start; font-size: 15px; line-height: 1.6; }
-.pr-promise i { color: var(--color-secondary); font-size: 18px; margin-top: 3px; }
-.pr-promise b { font-weight: var(--font-weight-bold); }
-.pr-promise a { font-weight: var(--font-weight-semibold); color: var(--color-primary); }
 
-.pr-body { padding: var(--space-section-md) var(--section-gutter); }
+.pr-body { scroll-margin-top: 90px; padding: var(--space-section-md) var(--section-gutter); }
 .pr-layout { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: var(--space-section-sm); align-items: start; }
 .pr-nav { position: sticky; top: 130px; display: grid; gap: var(--space-4); }
 .pr-nav-title { margin: 0; font-size: 14px; font-weight: var(--font-weight-bold); color: var(--color-muted); }
@@ -610,7 +601,7 @@ body.modal-open { overflow: hidden; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
-  .pr-hero-inner, .pr-policy-grid { grid-template-columns: 1fr; gap: var(--space-9); }
+  .pr-policy-grid { grid-template-columns: 1fr; gap: var(--space-9); }
   .pr-layout { grid-template-columns: 1fr; gap: var(--space-7); }
   .pr-nav { position: static; }
   .pr-nav ul { display: flex; flex-wrap: wrap; gap: var(--space-2); border: 0; }
