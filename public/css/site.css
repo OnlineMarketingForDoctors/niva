@@ -493,8 +493,86 @@ h1, h2, h3, h4 { margin: 0; font-weight: var(--font-weight-bold); }
   .header-cta .btn--phone { display: none; }
 }
 
+/* ---------- Service page sections (from niva-lp) ---------- */
+.section-top { margin: 0 0 var(--space-3); font-size: var(--text-subhead-size); line-height: 1.4; font-weight: var(--font-weight-bold); color: var(--color-secondary); max-width: 30rem; }
+.options { background: var(--color-surface); }
+.options .section-head { max-width: 760px; margin-bottom: var(--space-section-sm); }
+.options .lede, .book .lede { color: var(--color-muted); margin: 0; }
+.options-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-7); align-items: stretch; }
+.option { display: flex; flex-direction: column; overflow: clip; background: var(--color-white); border: var(--border-card); border-radius: var(--radius-hero); scroll-margin-top: 120px; }
+.option-media { position: relative; }
+.option-media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.option-price { position: absolute; left: var(--space-6); bottom: -16px; padding: 8px 16px; border-radius: var(--radius-pill); background: var(--color-primary); color: var(--color-white); font-size: 14px; font-weight: var(--font-weight-semibold); box-shadow: var(--shadow-header); }
+.option-price b { font-size: 18px; font-weight: var(--font-weight-bold); }
+.option-body { display: flex; flex-direction: column; gap: var(--space-3); flex: 1; padding: var(--space-9) var(--space-7) var(--space-7); }
+.option-body h3 { font-size: var(--text-subhead-size); line-height: 1.35; }
+.option-body p { margin: 0; color: var(--color-muted); }
+.bands { display: grid; gap: 2px; margin-top: var(--space-1); }
+.bands li { display: flex; justify-content: space-between; gap: var(--space-4); padding: var(--space-2) 0; border-top: 1px dashed var(--color-border); font-size: 15px; }
+.bands b { color: var(--color-primary); font-weight: var(--font-weight-bold); }
+.option-body .btn { align-self: flex-start; margin-top: auto; }
+.option-body p + .btn, .option-body .bands + .btn { margin-top: auto; }
+.option-body > :nth-last-child(2) { margin-bottom: var(--space-4); }
+
+.fees { background: var(--color-primary); color: var(--color-white); }
+.fees .section-head { max-width: 760px; margin-bottom: var(--space-section-sm); }
+.fees .lede { color: rgba(255, 255, 255, .8); margin: 0; }
+.wm-fees::before { right: -12%; top: -18%; filter: brightness(0) invert(1); opacity: .05; }
+.fees-grid { display: grid; grid-template-columns: 7fr 5fr; gap: var(--space-section-sm); align-items: stretch; }
+.fee-card { overflow: clip; background: var(--color-white); color: var(--color-text); border-radius: var(--radius-hero); }
+.fee-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.fee-table th, .fee-table td { padding: var(--space-5) var(--space-6); text-align: left; vertical-align: top; border-bottom: 1px solid var(--color-border); }
+.fee-table thead th { background: #F7FBFE; font-size: 13px; font-weight: var(--font-weight-bold); color: var(--color-muted); }
+.fee-table tbody th { font-weight: var(--font-weight-semibold); color: var(--color-primary); }
+.fee-table tbody th small { font-weight: var(--font-weight-light); color: var(--color-muted); }
+.fee-table td { font-size: 18px; font-weight: var(--font-weight-bold); color: var(--color-primary); white-space: nowrap; }
+.fee-table td small { display: block; font-size: 13px; font-weight: var(--font-weight-light); color: var(--color-muted); white-space: normal; }
+.fee-table tr:last-child th, .fee-table tr:last-child td { border-bottom: 0; }
+.fee-note { display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-5) var(--space-6); background: var(--color-surface); color: var(--color-primary); font-size: 15px; }
+.fee-note svg { flex: 0 0 22px; width: 22px; height: 22px; margin-top: 2px; color: var(--color-secondary); }
+.fee-note p, .fee-note strong { margin: 0; }
+.fee-note strong { font-weight: var(--font-weight-semibold); }
+.fees-aside { display: flex; flex-direction: column; gap: var(--space-7); padding-top: var(--space-3); }
+.fees-aside h3 { font-size: var(--text-subhead-size); margin-bottom: var(--space-2); }
+.fees-aside p { margin: 0; color: rgba(255, 255, 255, .85); }
+.fees-aside ul { display: grid; gap: var(--space-2); }
+.fees-aside li { display: flex; gap: var(--space-3); align-items: flex-start; color: rgba(255, 255, 255, .92); }
+.fees-aside li::before { content: ""; flex: 0 0 8px; width: 8px; height: 8px; margin-top: 11px; border-radius: var(--radius-round); background: var(--color-accent); }
+.fees-aside .quote { position: static; width: auto; max-width: none; margin-top: auto; background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .18); box-shadow: none; }
+.fees-aside .quote p { color: var(--color-white); }
+.fees-aside .quote footer { color: rgba(255, 255, 255, .72); }
+.fees-aside .quote footer img { filter: brightness(0) invert(1); }
+
+.book { background: var(--color-surface); }
+.wm-book::before { right: -10%; bottom: -30%; }
+.book-grid { display: grid; grid-template-columns: 5fr 7fr; gap: var(--space-section-sm); align-items: start; }
+.book-cta { display: grid; gap: var(--space-6); align-content: start; }
+.book-cta .heading { max-width: 14ch; }
+.book-cta .btn { justify-self: start; }
+.book-cta .alt { margin: 0; color: var(--color-muted); }
+.book-cta .alt a { font-weight: var(--font-weight-semibold); color: var(--color-primary); }
+.form-card { padding: var(--space-7); background: var(--color-white); border: var(--border-card); border-radius: var(--radius-hero); }
+.form-card h3 { font-size: var(--text-subhead-size); margin-bottom: var(--space-1); }
+.form-card > p { margin: 0 0 var(--space-4); font-size: 15px; color: var(--color-muted); }
+.form-card iframe { display: block; width: 100%; min-height: 634px; border: 0; }
+
+/* Booking modal (Semble) */
+.modal { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: var(--space-7); background: rgba(26, 32, 48, .72); backdrop-filter: blur(4px); opacity: 0; visibility: hidden; transition: opacity .25s, visibility 0s .25s; }
+.modal.is-open { opacity: 1; visibility: visible; transition: opacity .25s; }
+.modal-dialog { display: flex; flex-direction: column; width: min(960px, 100%); height: min(88vh, 900px); overflow: clip; background: var(--color-white); border-radius: var(--radius-hero); transform: translateY(24px); transition: transform .35s cubic-bezier(.2, .7, .2, 1); }
+.modal.is-open .modal-dialog { transform: none; }
+.modal-head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding: var(--space-3) var(--space-4) var(--space-3) var(--space-6); border-bottom: 1px solid var(--color-border); }
+.modal-head h2 { font-size: 18px; }
+.modal-body { flex: 1; min-height: 0; background: #F7FBFE; }
+.modal-body iframe { width: 100%; height: 100%; border: 0; }
+.modal-foot { padding: var(--space-2) var(--space-6); font-size: 13px; color: var(--color-muted); border-top: 1px solid var(--color-border); }
+.modal-foot a { color: var(--color-primary); font-weight: var(--font-weight-semibold); }
+body.modal-open { overflow: hidden; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
+  .options-grid { grid-template-columns: 1fr; max-width: 560px; }
+  .fees-grid, .book-grid { grid-template-columns: 1fr; gap: var(--space-10); }
   .g-layout { grid-template-columns: 1fr; gap: var(--space-10); }
   .g-summary { position: static; }
   .faqs-grid, .find-grid { grid-template-columns: 1fr; gap: var(--space-10); }
@@ -541,6 +619,12 @@ h1, h2, h3, h4 { margin: 0; font-weight: var(--font-weight-bold); }
   .site-footer { border-radius: var(--radius-block) var(--radius-block) 0 0; }
 }
 @media (max-width: 767px) {
+  .fee-table th, .fee-table td { padding: var(--space-3) var(--space-4); }
+  .fee-table thead th { font-size: 12px; }
+  .fee-table td { font-size: 16px; }
+  .modal { padding: 0; }
+  .modal-dialog { width: 100%; height: 100%; border-radius: 0; }
+  .form-card { padding: var(--space-5); }
   .g-grid { columns: 1; }
   .g-review { padding: var(--space-5); }
   .gallery-grid { grid-template-rows: repeat(3, 130px); grid-auto-columns: 190px; gap: var(--space-3); }

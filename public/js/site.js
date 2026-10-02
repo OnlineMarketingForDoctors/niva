@@ -32,6 +32,35 @@
     });
   }
 
+  /* Online booking: [data-book] links open the Semble calendar in a modal
+     (same as the niva-lp landing page). Without JS, or on pages without the
+     modal, the link's href goes to the clinic's booking page instead. */
+  var SEMBLE_URL = 'https://online-booking.semble.io/?token=fb139c090c61e2f90eb51c33b1a093098f5acf80';
+  var modal = document.getElementById('booking-modal');
+  if (modal) {
+    var frame = modal.querySelector('iframe'), lastFocus = null;
+    var openBooking = function (e) {
+      if (e) e.preventDefault();
+      lastFocus = document.activeElement;
+      if (frame && !frame.getAttribute('src')) frame.setAttribute('src', SEMBLE_URL);
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+      var close = modal.querySelector('[data-modal-close]');
+      if (close) close.focus();
+    };
+    var closeBooking = function () {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    };
+    document.querySelectorAll('[data-book]').forEach(function (b) { b.addEventListener('click', openBooking); });
+    modal.querySelectorAll('[data-modal-close]').forEach(function (b) { b.addEventListener('click', closeBooking); });
+    modal.addEventListener('click', function (e) { if (e.target === modal) closeBooking(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('is-open')) closeBooking(); });
+  }
+
   /* Services accordion: one row open at a time.
      Mouse: hovering a row opens it (it stays open until another row is hovered,
      so the list doesn't jump under the pointer). Touch and keyboard (Enter/Space):
