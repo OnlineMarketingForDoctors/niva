@@ -545,16 +545,11 @@ h1, h2, h3, h4 { margin: 0; font-weight: var(--font-weight-bold); }
 
 .book { background: var(--color-surface); }
 .wm-book::before { right: -10%; bottom: -30%; }
-.book-grid { display: grid; grid-template-columns: 5fr 7fr; gap: var(--space-section-sm); align-items: start; }
-.book-cta { display: grid; gap: var(--space-6); align-content: start; }
-.book-cta .heading { max-width: 14ch; }
-.book-cta .btn { justify-self: start; }
+.book-cta { display: grid; justify-items: center; gap: var(--space-6); max-width: 720px; text-align: center; }
+.book-cta .heading { margin: 0; }
+.book-cta .lede { max-width: 56ch; }
 .book-cta .alt { margin: 0; color: var(--color-muted); }
 .book-cta .alt a { font-weight: var(--font-weight-semibold); color: var(--color-primary); }
-.form-card { padding: var(--space-7); background: var(--color-white); border: var(--border-card); border-radius: var(--radius-hero); }
-.form-card h3 { font-size: var(--text-subhead-size); margin-bottom: var(--space-1); }
-.form-card > p { margin: 0 0 var(--space-4); font-size: 15px; color: var(--color-muted); }
-.form-card iframe { display: block; width: 100%; min-height: 634px; border: 0; }
 
 /* Booking modal (Semble) */
 .modal { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: var(--space-7); background: rgba(26, 32, 48, .72); backdrop-filter: blur(4px); opacity: 0; visibility: hidden; transition: opacity .25s, visibility 0s .25s; }
@@ -572,7 +567,7 @@ body.modal-open { overflow: hidden; }
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   .options-grid { grid-template-columns: 1fr; max-width: 560px; }
-  .fees-grid, .book-grid { grid-template-columns: 1fr; gap: var(--space-10); }
+  .fees-grid { grid-template-columns: 1fr; gap: var(--space-10); }
   .g-layout { grid-template-columns: 1fr; gap: var(--space-10); }
   .g-summary { position: static; }
   .faqs-grid, .find-grid { grid-template-columns: 1fr; gap: var(--space-10); }
@@ -624,7 +619,6 @@ body.modal-open { overflow: hidden; }
   .fee-table td { font-size: 16px; }
   .modal { padding: 0; }
   .modal-dialog { width: 100%; height: 100%; border-radius: 0; }
-  .form-card { padding: var(--space-5); }
   .g-grid { columns: 1; }
   .g-review { padding: var(--space-5); }
   .gallery-grid { grid-template-rows: repeat(3, 130px); grid-auto-columns: 190px; gap: var(--space-3); }
