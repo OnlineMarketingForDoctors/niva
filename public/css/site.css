@@ -579,6 +579,8 @@ body.modal-open { overflow: hidden; }
 .pr-cards { display: grid; gap: var(--space-7); }
 .pr-card { padding: var(--space-7) var(--space-9); background: var(--color-white); border: var(--border-card); border-radius: var(--radius-block); scroll-margin-top: 130px; }
 .pr-card h2 { font-size: 24px; line-height: 1.3; }
+.pr-head { display: flex; align-items: center; gap: var(--space-4); }
+.pr-lead { padding-left: calc(48px + var(--space-4)); }
 .pr-lead { margin: var(--space-2) 0 0; color: var(--color-muted); font-size: 15px; }
 .pr-list { margin-top: var(--space-4); }
 .pr-row { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-6); padding: var(--space-4) 0; border-top: 1px solid var(--color-border); }
@@ -657,6 +659,8 @@ body.modal-open { overflow: hidden; }
 @media (max-width: 767px) {
   .pr-card, .pr-policy { padding: var(--space-6) var(--space-5); }
   .pr-card h2 { font-size: 20px; }
+  .pr-head .svc-icon { width: 42px; height: 42px; }
+  .pr-lead { padding-left: 0; }
   .pr-row { gap: var(--space-4); }
   .pr-price { font-size: 18px; }
   .pr-nav .btn { display: none; }
