@@ -6,6 +6,7 @@ Static site served by Vercel from `public/` (no build step).
 
 - `public/index.html` — the homepage, hand-written HTML on the design system
 - `public/private-gp-consultations/index.html` — Private GP Consultations service page (sections from the `niva-lp` landing page + homepage); its [data-book] buttons open the Semble booking calendar in a modal
+- `public/pricing/index.html` — Pricing page; all fees from nivamedicalclinic.co.uk/services/#fees. The menu's Fees link points here
 - `public/css/site.css` — all component styles; uses only tokens from `public/design-system/tokens.css`
 - `public/js/site.js` — mobile nav, booking modal, services accordion, review carousels, gallery, reveal-on-scroll (page works without it)
 - `public/design-system/` — `tokens.css` plus a rendered style guide at `/design-system/`

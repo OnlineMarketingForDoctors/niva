@@ -61,6 +61,22 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('is-open')) closeBooking(); });
   }
 
+  /* Pricing page: highlight the category currently in view in the side nav */
+  var prLinks = document.querySelectorAll('.pr-nav a[href^="#"]');
+  if (prLinks.length && 'IntersectionObserver' in window) {
+    var byId = {};
+    prLinks.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        prLinks.forEach(function (a) { a.classList.remove('is-current'); a.removeAttribute('aria-current'); });
+        var a = byId[en.target.id];
+        if (a) { a.classList.add('is-current'); a.setAttribute('aria-current', 'location'); }
+      });
+    }, { rootMargin: '-35% 0px -60% 0px' });
+    Object.keys(byId).forEach(function (id) { var el = document.getElementById(id); if (el) spy.observe(el); });
+  }
+
   /* Services accordion: one row open at a time.
      Mouse: hovering a row opens it (it stays open until another row is hovered,
      so the list doesn't jump under the pointer). Touch and keyboard (Enter/Space):
