@@ -436,7 +436,7 @@ h1, h2, h3, h4 { margin: 0; font-weight: var(--font-weight-bold); }
 
 /* ---------- Footer ---------- */
 .site-footer { border-radius: var(--radius-hero) var(--radius-hero) 0 0; padding: var(--space-section-sm) var(--section-gutter) var(--space-6); }
-.footer-grid { display: grid; grid-template-columns: 1.5fr .9fr 1.2fr 1fr; gap: var(--space-10); }
+.footer-grid { display: grid; grid-template-columns: 1.25fr .85fr 1.15fr 1.5fr; gap: var(--space-10); }
 .site-footer h2 { font-size: var(--text-subhead-size); line-height: var(--text-subhead-line); margin-bottom: var(--space-3); }
 .site-footer .brand img { width: 180px; }
 .site-footer .fine { font-size: var(--text-fine-size); line-height: var(--text-fine-line); }
@@ -648,9 +648,12 @@ body.modal-open { overflow: hidden; }
 .ct-parking i { color: var(--color-secondary); font-size: 18px; margin-top: 3px; }
 
 /* ---------- Responsive ---------- */
-/* Laptop widths: give the brand column room for the CQC + Doctify badges on one line */
-@media (min-width: 1025px) and (max-width: 1279px) {
-  .footer-grid { grid-template-columns: 1.7fr .8fr 1.1fr 1fr; gap: var(--space-6); }
+/* Laptop widths: give the Parking column room for the CQC + Doctify badges on one line */
+@media (min-width: 1151px) and (max-width: 1279px) {
+  .footer-grid { grid-template-columns: 1.15fr .75fr 1.1fr 1.6fr; gap: var(--space-6); }
+}
+@media (min-width: 1025px) and (max-width: 1150px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 1024px) {
