@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__novamira-nivamedicalclini",
+      "mcp__novamira-nivamedicalclini__mcp-adapter-execute-ability",
+      "mcp__novamira-nivamedicalclini__mcp-adapter-get-ability-info",
+      "mcp__novamira-nivamedicalclini__mcp-adapter-discover-abilities"
+    ]
+  }
+}
