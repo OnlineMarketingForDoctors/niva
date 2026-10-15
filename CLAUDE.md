@@ -39,3 +39,7 @@ Until explicitly told otherwise, every page built in this repo must stay out of 
 - Keep the `X-Robots-Tag` header in `vercel.json` (applies to every response, including PDFs and images).
 - Do NOT add `Disallow: /` to `robots.txt` — it stops crawlers from seeing the noindex directives. If a `robots.txt` exists, it should allow crawling.
 - Do NOT add a sitemap or submit the site to Google Search Console for indexing.
+
+## Image generation
+
+- Generate all images for this project with Nano Banana (Higgsfield model `nano_banana_2_1`), not GPT Image or other models.
