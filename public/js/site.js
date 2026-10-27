@@ -56,10 +56,10 @@
         var cur = slides[at], next = slides[(at + 1) % slides.length];
         cur.classList.remove('is-active'); cur.classList.add('is-leaving');
         next.classList.remove('is-leaving'); next.classList.add('is-active');
-        setTimeout(function () { cur.classList.remove('is-leaving'); }, 1700);
+        setTimeout(function () { cur.classList.remove('is-leaving'); }, 1300);
         at = (at + 1) % slides.length;
         load(slides[(at + 1) % slides.length]);
-      }, 6000);
+      }, 4000);
     }
   }
 
