@@ -10,7 +10,7 @@
 <link rel="icon" href="/wp-content/uploads/2024/05/cropped-Asset-5@3x-8-192x192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="/wp-content/uploads/2024/05/cropped-Asset-5@3x-8-180x180.png">
 <link rel="preload" href="/wp-content/uploads/2024/05/Asset-23x-8-1.png" as="image">
-<link rel="preload" href="/assets/img/hero-consultation.webp" as="image" media="(min-width: 768px)">
+<link rel="preload" href="/assets/img/hero-reception.webp" as="image" media="(min-width: 768px)">
 <link rel="stylesheet" href="/wp-content/uploads/elementor/google-fonts/css/poppins.css">
 <link rel="stylesheet" href="/wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.min.css">
 <link rel="stylesheet" href="/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.min.css">
@@ -135,10 +135,28 @@
 
   <!-- Hero -->
   <section class="hero" aria-labelledby="hero-title">
-    <picture class="hero-media">
-      <source media="(max-width: 767px)" srcset="/assets/img/hero-consultation-mobile.webp">
-      <img src="/assets/img/hero-consultation.webp" alt="A Niva GP talking with a patient in a consulting room" width="2000" height="859" fetchpriority="high">
-    </picture>
+    <div class="hero-media hero-slides" data-hero-slides>
+      <picture class="hero-slide is-active">
+        <source media="(max-width: 767px)" srcset="/assets/img/hero-reception-mobile.webp">
+        <img src="/assets/img/hero-reception.webp" alt="Niva Medical Clinic reception desk with the gold logo on a backlit wall" width="2000" height="1334" fetchpriority="high">
+      </picture>
+      <picture class="hero-slide" aria-hidden="true">
+        <source media="(max-width: 767px)" data-srcset="/assets/img/hero-waiting-area-mobile.webp">
+        <img data-src="/assets/img/hero-waiting-area.webp" alt="The waiting area, with a navy sofa and plants by the front window" width="2000" height="1334" decoding="async">
+      </picture>
+      <picture class="hero-slide" aria-hidden="true">
+        <source media="(max-width: 767px)" data-srcset="/assets/img/hero-consulting-room-mobile.webp">
+        <img data-src="/assets/img/hero-consulting-room.webp" alt="A Niva GP at the desk in a consulting room" width="2000" height="1334" decoding="async">
+      </picture>
+      <picture class="hero-slide" aria-hidden="true">
+        <source media="(max-width: 767px)" data-srcset="/assets/img/hero-shopfront-mobile.webp">
+        <img data-src="/assets/img/hero-shopfront.webp" alt="The Niva Medical Clinic shopfront on The Broadway, Stanmore" width="2000" height="1334" decoding="async">
+      </picture>
+      <picture class="hero-slide" aria-hidden="true">
+        <source media="(max-width: 767px)" data-srcset="/assets/img/hero-hallway-mobile.webp">
+        <img data-src="/assets/img/hero-hallway.webp" alt="The clinic hallway with an abstract painting above a console table" width="2000" height="1334" decoding="async">
+      </picture>
+    </div>
     <div class="hero-inner">
       <div class="hero-copy">
         <h1 class="display" id="hero-title">Stanmore's Trusted Private GP Services</h1>

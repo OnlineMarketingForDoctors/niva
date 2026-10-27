@@ -9,7 +9,7 @@ Static site served by Vercel from `public/` (no build step).
 - `public/contact/index.html` — Contact page (contact cards, opening hours, the live site's enquiry form, Find us). Menu Contact links point here
 - `public/pricing/index.html` — Pricing page; all fees from nivamedicalclinic.co.uk/services/#fees. The menu's Fees link points here
 - `public/css/site.css` — all component styles; uses only tokens from `public/design-system/tokens.css`
-- `public/js/site.js` — mobile nav, booking modal, services accordion, review carousels, gallery, reveal-on-scroll (page works without it)
+- `public/js/site.js` — mobile nav, homepage hero slideshow, booking modal, services accordion, review carousels, gallery, reveal-on-scroll (page works without it)
 - `public/design-system/` — `tokens.css` plus a rendered style guide at `/design-system/`
 - `DESIGN_SYSTEM.md` — the spec: tokens, components, contrast audit, known inconsistencies
 - `public/legacy/index.html` — byte-for-byte mirror of the original Elementor homepage, kept for visual comparison only; do not edit

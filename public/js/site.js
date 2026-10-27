@@ -32,6 +32,37 @@
     });
   }
 
+  /* Homepage hero slideshow. Later slides only get their src just before they
+     show, so the first photo is the only one loaded up front. With reduced
+     motion the first photo stays put. */
+  var show = document.querySelector('[data-hero-slides]');
+  if (show && !reduce) {
+    var slides = Array.prototype.slice.call(show.querySelectorAll('.hero-slide')), at = 0;
+    var load = function (slide) {
+      var img = slide.querySelector('img[data-src]'), src = slide.querySelector('source[data-srcset]');
+      if (!img) return;
+      var url = img.getAttribute('data-src');
+      if (src) {
+        src.srcset = src.getAttribute('data-srcset'); src.removeAttribute('data-srcset');
+        /* point the img at the size the <source> will pick, so only one file downloads */
+        if (window.matchMedia(src.media).matches) url = src.srcset;
+      }
+      img.src = url; img.removeAttribute('data-src');
+    };
+    if (slides.length > 1) {
+      load(slides[1]);
+      setInterval(function () {
+        if (document.hidden) return;
+        var cur = slides[at], next = slides[(at + 1) % slides.length];
+        cur.classList.remove('is-active'); cur.classList.add('is-leaving');
+        next.classList.remove('is-leaving'); next.classList.add('is-active');
+        setTimeout(function () { cur.classList.remove('is-leaving'); }, 1700);
+        at = (at + 1) % slides.length;
+        load(slides[(at + 1) % slides.length]);
+      }, 6000);
+    }
+  }
+
   /* Online booking: [data-book] links open the Semble calendar in a modal
      (same as the niva-lp landing page). Without JS, or on pages without the
      modal, the link's href goes to the clinic's booking page instead. */
